@@ -33,8 +33,8 @@ Route::get('/admin/signin', [AdminAuth::class, 'index'])->middleware('guest');
 Route::post('/admin/signin', [AdminAuth::class, 'adminSignIn']);
 Route::post('/admin/signout', [AdminAuth::class, 'adminSignOut']);
 
-Route::get('/admin', [adminDashboard::class, 'index'])->middleware('auth');
+Route::get('/admin', [adminDashboard::class, 'index'])->middleware('admin');
 
-Route::get('/admin/product', [product::class, 'index'])->middleware('auth');
-Route::get('/admin/variant', [variant::class, 'index'])->middleware('auth');
+Route::get('/admin/product', [product::class, 'index'])->middleware('admin');
+Route::get('/admin/variant', [variant::class, 'index'])->middleware('admin');
 
