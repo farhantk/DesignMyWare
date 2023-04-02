@@ -36,31 +36,47 @@
         </div>
       </div>
       <div class="relative inset-y-0 right-0 px-24">
-        <div>
-          <button type="button" class="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-            <span class="sr-only">Open user menu</span>
-            <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-          </button>
-        </div>
-
-        <!--
-          Dropdown menu, show/hide based on menu state.
-
-          Entering: "transition ease-out duration-100"
-            From: "transform opacity-0 scale-95"
-            To: "transform opacity-100 scale-100"
-          Leaving: "transition ease-in duration-75"
-            From: "transform opacity-100 scale-100"
-            To: "transform opacity-0 scale-95"
-        -->
-        <div class="absolute right-0 z-10 mt-2 w-48 origin-top-left rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-          <!-- Active: "bg-gray-100", Not Active: "" -->
-          <a href="/user/profile" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
-        </div>
+          @auth
+            <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm font-medium text-gray-900 rounded-full hover:text-blue-600 dark:hover:text-blue-500 md:mr-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white" type="button">
+              <span class="sr-only">Open user menu</span>
+              <img class="w-8 h-8 mr-2 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
+                {{auth()->user()->name}}
+              <svg class="w-4 h-4 mx-1.5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+          
+            <!-- Dropdown menu -->
+            <div id="dropdownAvatarName" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                <div class="px-4 py-3 text-sm text-gray-900 ">
+                  <div class="font-medium ">{{auth()->user()->name}}</div>
+                  <div class="truncate">{{auth()->user()->email}}</div>
+                </div>
+                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
+                  <li>
+                    <a href="/user/profile" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
+                  </li>
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Settings</a>
+                  </li>
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Earnings</a>
+                  </li>
+                </ul>
+                <div class="py-2" >
+                  <form  action="/signout" method="post">
+                    @csrf
+                    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      <button type="submit">
+                        Sign out
+                      </button>
+                    </a>
+                  </form>
+                </div>
+            </div>
+          @endauth
+          @guest
+            <a class="mr-2 text-sm  text-black">Sudah punya akun? </a>
+            <a href="/signin" class="text-sm font-bold text-third">Masuk</a>
+          @endguest
       </div>
     </header>
 <!-- END: Navbar -->
