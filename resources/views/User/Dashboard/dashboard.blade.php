@@ -21,28 +21,92 @@
             <div class="w-1/3 flex flex-col items-center py-10">
                 <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image"/>
                 <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{auth()->user()->name}}</h5>
-                <span class="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
-                <div class="flex mt-4 space-x-3 md:mt-6">
-                    <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add friend</a>
-                    <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">Message</a>
-                </div>
+                <div class="mt-2 flex items-center gap-x-3">
+                    <button type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Change</button>
+                  </div>
             </div>
             <div class="w-full p-10">                 
-                <form>
-                    <div class="mb-6">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                        <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="{{auth()->user()->email}}" disabled readonly>
+                <form action="" method="">
+                    <div class="space-y-12">
+                      <div class="border-b border-gray-900/10 pb-12">
+                        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                          <div class="sm:col-span-4">
+                            <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+                            <div class="mt-2">
+                              <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                <input type="email" name="username" id="username" autocomplete="username" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value="{{auth()->user()->email}}" readonly disabled>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="sm:col-span-4">
+                            <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Nama Lengkap</label>
+                            <div class="mt-2">
+                              <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                <input type="text" name="username" id="username" autocomplete="username" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value="{{auth()->user()->name}}">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="sm:col-span-4">
+                            <label for="username" class="block text-sm font-medium leading-6 text-gray-900">No Telepon</label>
+                            <div class="mt-2">
+                              <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                <input type="text" name="username" id="username" autocomplete="username" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value="{{auth()->user()->name}}">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  
+                      <div class="border-b border-gray-900/10 pb-12">
+                        <h2 class="text-base font-semibold leading-7 text-gray-900">Alamat</h2>
+                  
+                        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                            <div class="sm:col-span-2 sm:col-start-1">
+                                <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Provinsi</label>
+                                <div class="mt-2">
+                                    <input type="text" name="city" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+                            
+                            <div class="sm:col-span-2">
+                                <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Kota/Kabupaten</label>
+                                <div class="mt-2">
+                                    <input type="text" name="region" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+                            <div class="sm:col-span-2 sm:col-start-1">
+                                <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Kecamatan</label>
+                                <div class="mt-2">
+                                    <input type="text" name="city" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+                            
+                            <div class="sm:col-span-2">
+                                <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Kelurahan</label>
+                                <div class="mt-2">
+                                    <input type="text" name="region" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+                            
+                            <div class="sm:col-span-2">
+                                <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Kode Pos</label>
+                                <div class="mt-2">
+                                    <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+                            <div class="col-span-full">
+                              <label for="street-address" class="block text-sm font-medium leading-6 text-gray-900">Alamat lengkap</label>
+                              <div class="mt-2">
+                                <input type="text" name="street-address" id="street-address" autocomplete="street-address" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Jl. Manglayang blok 2 No. 9">
+                              </div>
+                            </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="mb-6">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Nama lengkap</label>
-                        <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="{{auth()->user()->name}}">
+                  
+                    <div class="mt-6 flex items-center justify-end gap-x-6">
+                      <button type="submit" class="rounded-md bg-third px-3 py-2 text-sm font-semibold text-black shadow-sm ">Simpan</button>
                     </div>
-                    <div class="mb-6">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">No Handphone</label>
-                        <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="{{auth()->user()->name}}">
-                    </div>
-
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
                 </form>
             </div>
         </div>

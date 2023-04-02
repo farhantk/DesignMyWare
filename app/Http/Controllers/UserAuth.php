@@ -25,8 +25,8 @@ class UserAuth extends Controller
         ]);
         $user = User::where('email', $credentials['email'])->first();
 
-        if (!$user) {
-            $request->session()->flash('danger', 'emal tdak terdaftar');
+        if (!$user || $user->isAdmin) {
+            $request->session()->flash('danger', 'Email tdak terdaftar');
             return redirect('/signin');
         }
         if (!Hash::check($credentials['password'], $user->password)) {

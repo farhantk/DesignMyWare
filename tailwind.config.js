@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
+    "./resources/**/*.html",
     "./resources/**/*.vue",
   ],
   theme: {
@@ -21,7 +22,9 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
 
 
