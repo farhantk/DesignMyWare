@@ -16,7 +16,14 @@ return new class extends Migration
             $table->boolean('isAdmin')->default(false);
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('email')->unique();
+            $table->string('gender');
+            $table->string('phone_number');
+            $table->string('province');
+            $table->string('city');
+            $table->string('subdistrict');
+            $table->string('ward');
+            $table->string('street');
+            $table->string('zip');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
