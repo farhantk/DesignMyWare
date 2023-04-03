@@ -18,7 +18,7 @@ use App\Http\Controllers\variant;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//user
+//user auth
 Route::get('/', [UserAuth::class, 'view']);
 Route::get('/signin', [UserAuth::class, 'view_SignIn'])->middleware('guest');
 Route::post('/signin', [UserAuth::class, 'SignIn']);
@@ -27,7 +27,7 @@ Route::post('/signup', [UserAuth::class, 'SignUp']);
 Route::post('/signout', [UserAuth::class, 'SignOut']);
 
 Route::get('/user/profile', [UserDashboard::class, 'index'])->middleware('auth');
-Route::post('/user/profile', [UserDashboard::class, 'editProfile']);
+Route::put('/user/profile', [UserDashboard::class, 'edit']);
 // Admin
 Route::get('/admin/signin', [AdminAuth::class, 'index'])->middleware('guest');
 Route::post('/admin/signin', [AdminAuth::class, 'adminSignIn']);
