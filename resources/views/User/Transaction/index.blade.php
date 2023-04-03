@@ -7,7 +7,7 @@
     <link href="{{asset('css')}}/style.css" rel="stylesheet">
     
 
-    <title>Profil | Design My Ware</title>
+    <title>tirtaFarhn</title>
 </head>
 <body>
     
