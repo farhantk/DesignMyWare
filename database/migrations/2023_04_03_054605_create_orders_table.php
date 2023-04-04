@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('product_id');
             $table->string('status');
+            $table->string('courir');
             $table->string('receipt_code');
             $table->integer('total_price');
             $table->integer('expected_price');
@@ -23,7 +24,7 @@ return new class extends Migration
         });
     }
 
-    /**
+    /*
      * Reverse the migrations.
      */
     public function down(): void

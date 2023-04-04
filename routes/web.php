@@ -31,6 +31,8 @@ Route::get('/user/profile', [UserDashboard::class, 'index'])->middleware('auth')
 Route::put('/user/profile', [UserDashboard::class, 'edit']);
 
 Route::get('/user/transaction', [transaction::class, 'index'])->middleware('auth');
+Route::get('/user/transaction/{orderid}/detail', [transaction::class, 'detail'])->middleware('auth');
+Route::get('/user/transaction/{orderid}/invoice', [transaction::class, 'invoice'])->middleware('auth');
 // Admin
 Route::get('/admin/signin', [AdminAuth::class, 'index'])->middleware('guest');
 Route::post('/admin/signin', [AdminAuth::class, 'adminSignIn']);
