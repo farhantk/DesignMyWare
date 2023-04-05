@@ -20,4 +20,7 @@ class product extends Model
     public function variant(){
         return $this->belongsTo(variant::class);
     }
+    public function pesanan_details(){
+        return $this->hasMany(PesananDetails::class,'product_id', 'id');
+   }
 }

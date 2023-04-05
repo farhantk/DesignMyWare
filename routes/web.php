@@ -43,3 +43,8 @@ Route::get('/admin', [adminDashboard::class, 'index'])->middleware('admin');
 Route::get('/admin/product', [product::class, 'index'])->middleware('admin');
 Route::get('/admin/variant', [variant::class, 'index'])->middleware('admin');
 
+
+
+
+// //Keranjang
+Route::get('/user/keranjang', [UserAuth::class, 'keranjang'])->middleware('guest');
