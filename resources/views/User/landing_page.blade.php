@@ -80,7 +80,7 @@
     <!-- END: Portofolio -->
     <!-- START: Blog -->
     <section id="product_overview" class="pt-24 pb-28 for-bg">
-        <div class="container">
+        <div class="container-fluid px-24">
             <div class="w-full px-4">
                 <div class="max-w-full mx-auto text-center mb-16">
                     <h4 class="block text-3xl mt-1 text-third lg:text-4xl mb-2">Bisa Custom Apa Saja?</h4>
@@ -88,75 +88,73 @@
             </div>
             <div>
                 <div class="__scroll-selector">
-                    <div class="w-full px-4 py-6 lg:w-1/2 xl:w-1/3">
-                      <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
-                        <a href="#">
-                            <img class="p-8 rounded-t-lg" src="{{asset('img')}}/pngegg.png" alt="product image" />
-                        </a>
+                    <div class="px-4 py-6 lg:w-1/5 xl:w-1/5">
+                      <div class="w-full max-w-[250px] bg-white border border-gray-200 rounded-lg shadow ">
+                        <img class="p-8 rounded-t-lg" src="{{asset('img')}}/pngegg.png" alt="product image" width="200px" height="200px" />
                         <div class="px-5 pb-5">
-                            <a href="#">
-                                <h5 class="text-xl font-semibold tracking-tight text-gray-900">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
+                            <h5 class="text-xl font-semibold tracking-tight text-gray-900">Hoodie</h5>
+                            <div class="flex items-center justify-between py-2">
+                                <span class="text-3xl font-bold text-gray-900">Rp. 1000000</span>
+                            </div>
+                            <a href="#product_overview">
+                                <button class="text-base text-white bg-third rounded-lg font-semibold py-1 px-2 hover:opacity-80 hover:shadow-lg transition duration-500">Custom sekarang</button>
                             </a>
-                            <div class="flex items-center mt-2.5 mb-5">
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>First star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Second star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Third star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fourth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fifth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">5.0</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-3xl font-bold text-gray-900">$599</span>
-                                <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add to cart</a>
-                            </div>
                         </div>
                       </div>
                     </div>
-                    <div class="w-full px-4 py-6 lg:w-1/2 xl:w-1/3">
-                      <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
-                        <a href="#">
-                            <img class="p-8 rounded-t-lg" src="{{asset('img')}}/pngegg.png" alt="product image" />
-                        </a>
+                    <div class="px-4 py-6 lg:w-1/5 xl:w-1/5">
+                      <div class="w-full max-w-[250px] bg-white border border-gray-200 rounded-lg shadow ">
+                        <img class="p-8 rounded-t-lg" src="{{asset('img')}}/pngegg.png" alt="product image" width="200px" height="200px" />
                         <div class="px-5 pb-5">
-                            <a href="#">
-                                <h5 class="text-xl font-semibold tracking-tight text-gray-900">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
+                            <h5 class="text-xl font-semibold tracking-tight text-gray-900">Hoodie</h5>
+                            <div class="flex items-center justify-between py-2">
+                                <span class="text-3xl font-bold text-gray-900">Rp. 1000000</span>
+                            </div>
+                            <a href="#product_overview">
+                                <button class="text-base text-white bg-third rounded-lg font-semibold py-1 px-2 hover:opacity-80 hover:shadow-lg transition duration-500">Custom sekarang</button>
                             </a>
-                            <div class="flex items-center mt-2.5 mb-5">
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>First star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Second star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Third star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fourth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fifth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">5.0</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-3xl font-bold text-gray-900">$599</span>
-                                <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add to cart</a>
-                            </div>
                         </div>
                       </div>
                     </div>
-                    <div class="w-full px-4 py-6 lg:w-1/2 xl:w-1/3">
-                      <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
-                        <a href="#">
-                            <img class="p-8 rounded-t-lg" src="{{asset('img')}}/pngegg.png" alt="product image" />
-                        </a>
+                    <div class="px-4 py-6 lg:w-1/5 xl:w-1/5">
+                      <div class="w-full max-w-[250px] bg-white border border-gray-200 rounded-lg shadow ">
+                        <img class="p-8 rounded-t-lg" src="{{asset('img')}}/pngegg.png" alt="product image" width="200px" height="200px" />
                         <div class="px-5 pb-5">
-                            <a href="#">
-                                <h5 class="text-xl font-semibold tracking-tight text-gray-900">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
+                            <h5 class="text-xl font-semibold tracking-tight text-gray-900">Hoodie</h5>
+                            <div class="flex items-center justify-between py-2">
+                                <span class="text-3xl font-bold text-gray-900">Rp. 1000000</span>
+                            </div>
+                            <a href="#product_overview">
+                                <button class="text-base text-white bg-third rounded-lg font-semibold py-1 px-2 hover:opacity-80 hover:shadow-lg transition duration-500">Custom sekarang</button>
                             </a>
-                            <div class="flex items-center mt-2.5 mb-5">
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>First star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Second star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Third star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fourth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fifth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">5.0</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="px-4 py-6 lg:w-1/5 xl:w-1/5">
+                      <div class="w-full max-w-[250px] bg-white border border-gray-200 rounded-lg shadow ">
+                        <img class="p-8 rounded-t-lg" src="{{asset('img')}}/pngegg.png" alt="product image" width="200px" height="200px" />
+                        <div class="px-5 pb-5">
+                            <h5 class="text-xl font-semibold tracking-tight text-gray-900">Hoodie</h5>
+                            <div class="flex items-center justify-between py-2">
+                                <span class="text-3xl font-bold text-gray-900">Rp. 1000000</span>
                             </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-3xl font-bold text-gray-900">$599</span>
-                                <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add to cart</a>
+                            <a href="#product_overview">
+                                <button class="text-base text-white bg-third rounded-lg font-semibold py-1 px-2 hover:opacity-80 hover:shadow-lg transition duration-500">Custom sekarang</button>
+                            </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="px-4 py-6 lg:w-1/5 xl:w-1/5">
+                      <div class="w-full max-w-[250px] bg-white border border-gray-200 rounded-lg shadow ">
+                        <img class="p-8 rounded-t-lg" src="{{asset('img')}}/pngegg.png" alt="product image" width="200px" height="200px" />
+                        <div class="px-5 pb-5">
+                            <h5 class="text-xl font-semibold tracking-tight text-gray-900">Hoodie</h5>
+                            <div class="flex items-center justify-between py-2">
+                                <span class="text-3xl font-bold text-gray-900">Rp. 1000000</span>
                             </div>
+                            <a href="#product_overview">
+                                <button class="text-base text-white bg-third rounded-lg font-semibold py-1 px-2 hover:opacity-80 hover:shadow-lg transition duration-500">Custom sekarang</button>
+                            </a>
                         </div>
                       </div>
                     </div>

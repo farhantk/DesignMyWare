@@ -59,10 +59,7 @@
                         <a href="/user/profile" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
                       </li>
                       <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Settings</a>
-                      </li>
-                      <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Earnings</a>
+                        <a href="/user/transaction" class="block px-4 py-2 hover:bg-gray-100">Transaksi</a>
                       </li>
                     </ul>
                     <div class="py-2" >
