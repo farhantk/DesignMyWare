@@ -46,6 +46,14 @@
             <p>Informational</p>
             </a>
         </li>
+        <li class="nav-header"><b>Transaksi</b></li>
+        <li class="nav-item">
+            <a href="/admin/transaksi" class="nav-link">
+                <i class="nav-icon far fa-envelope"></i>
+                <p>
+                    Lihat Seluruh Tranksaksi
+                </p>
+            </a>
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

@@ -10,6 +10,7 @@ class userDashboard extends Controller
     public function index(){
         return view('User.Dashboard.dashboard');
     }
+
     public function edit(Request $request){
         $validatedData = $request->validate([
             'name' => 'required|max:255',
