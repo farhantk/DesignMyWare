@@ -8,6 +8,8 @@ use App\Http\Controllers\userDashboard;
 use App\Http\Controllers\product;
 use App\Http\Controllers\variant;
 use App\Http\Controllers\transaction;
+use App\Http\Controllers\cart;
+use App\Http\Controllers\transaksi;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,4 +49,6 @@ Route::get('/admin/variant', [variant::class, 'index'])->middleware('admin');
 
 
 // //Keranjang
-Route::get('/user/keranjang', [UserAuth::class, 'keranjang'])->middleware('guest');
+Route::get('/user/cart', [cart::class, 'view_keranjang'])->middleware('auth');
+// Route::get('/admin/')
+Route::get('/admin/transaksi', [transaksi::class, 'view_transaksi'])->middleware('admin');
