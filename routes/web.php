@@ -49,6 +49,6 @@ Route::get('/admin/variant', [variant::class, 'index'])->middleware('admin');
 
 
 // //Keranjang
-Route::get('/user/cart', [cart::class, 'view_keranjang'])->middleware('auth');
+Route::get('/user/cart', [Cart::class, 'view_keranjang'])->middleware('auth');
 // Route::get('/admin/')
 Route::get('/admin/transaksi', [transaksi::class, 'view_transaksi'])->middleware('admin');

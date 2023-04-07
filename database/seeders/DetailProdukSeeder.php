@@ -18,8 +18,17 @@ class DetailProdukSeeder extends Seeder
             'total_harga' => 200000,
             'nama' => 'budi',
             'nomor' => '08652123333',
-            'product id' => 1,
-            'pesanan_id'=> 2
+            'product_id' => 1,
+            'pesanan_id'=> 1
         ]);
+
+        DB::table('pesanans')->insert([
+        	'kode_pesanan' => '12343211',
+            'status' => '0',
+            'total_harga' => 200000,
+            'kode_unik' => '086511',
+            'user_id' => 1
+        ]);
+
     }
 }
