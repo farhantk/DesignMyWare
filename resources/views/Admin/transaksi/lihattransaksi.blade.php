@@ -9,12 +9,14 @@
           <table class="table table-hover text-nowrap">
             <thead>
               <tr>
-                <th>No</th>
-                <th>Nama Barang</th>
-                <th>Jumlah/th>
-                <th>Harga</th>
-                <th>Total Harga</th>
-                <th>Hapus</th>
+                <th scope="col" class="px-6 py-3">No</th>
+                <th scope="col" class="px-6 py-3">Nama</th>
+                <th scope="col" class="px-6 py-3">Handphone</th>
+                <th scope="col" class="px-6 py-3">Nama Barang</th>
+                <th scope="col" class="px-6 py-3">Jumlah</th>
+                <th scope="col" class="px-6 py-3">Harga</th>
+                <th scope="col" class="px-6 py-3">Total Harga</th>
+                <th scope="col" class="px-6 py-3">Hapus</th>
               </tr>
             </thead>
             <tbody>
@@ -24,6 +26,12 @@
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{$no++}}
                         </th>
+                        <td class="px-6 py-4">
+                            {{ $pesanan_detail->nama}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $pesanan_detail->nomor}}
+                        </td>
                         <td class="px-6 py-4">
                             {{ $pesanan_detail->product->name}}
                         </td>
