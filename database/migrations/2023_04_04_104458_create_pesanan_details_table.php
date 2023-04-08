@@ -18,6 +18,8 @@ return new class extends Migration
             $table->boolean('nameset')->default(false);
             $table->foreignId('product_id');
             $table->foreignId('pesanan_id');
+            $table->integer('harga_nego');
+            $table->integer('harga');
             $table->timestamps();
         });
     }
