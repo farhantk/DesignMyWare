@@ -16,7 +16,8 @@ class order extends Model
         'courir',
         'receipt_code',
         'total_price',
-        'expected_price'
+        'expected_price',
+        'paymentreceipt'
     ];
     public function product(){
         return $this->hasMany(product::class);

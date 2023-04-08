@@ -60,14 +60,14 @@
                             <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Nama Lengkap</label>
                             <div class="mt-2">
                               <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                <input type="text" name="name" id="username" autocomplete="username" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value="{{auth()->user()->name}}">
+                                <input type="text" name="name" id="username" autocomplete="username" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" value="{{auth()->user()->name}}">
                               </div>
                             </div>
                           </div>
                           <div class="sm:col-span-4">
                             <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Jenis kelamin</label>
                             <div class="mt-2">
-                              <select name="gender" id="countries" class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                              <select name="gender" id="countries" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6">
                                 <option value="pria" {{ auth()->user()->name == 'pria' ? 'selected' : '' }}>Pria</option>
                                 <option value="wanita" {{ auth()->user()->name == 'wanita' ? 'selected' : '' }}>Wanita</option>
                               </select>
@@ -77,7 +77,7 @@
                             <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                             <div class="mt-2">
                               <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                <input type="email" name="email" id="username" autocomplete="username" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value="{{auth()->user()->email}}" readonly disabled>
+                                <input type="email" name="email" id="username" autocomplete="username" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" value="{{auth()->user()->email}}" readonly disabled>
                               </div>
                             </div>
                           </div>
@@ -85,7 +85,7 @@
                             <label for="username" class="block text-sm font-medium leading-6 text-gray-900">No Telepon</label>
                             <div class="mt-2">
                               <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                <input type="text" name="phone_number" id="username" autocomplete="username" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value="{{auth()->user()->phone_number}}">
+                                <input type="text" name="phone_number" id="username" autocomplete="username" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" value="{{auth()->user()->phone_number}}">
                               </div>
                             </div>
                           </div>
@@ -99,40 +99,40 @@
                             <div class="sm:col-span-2 sm:col-start-1">
                                 <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Provinsi</label>
                                 <div class="mt-2">
-                                    <input type="text" name="province" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->province}}">
+                                    <input type="text" name="province" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" value="{{auth()->user()->province}}">
                                 </div>
                             </div>
                             
                             <div class="sm:col-span-2">
                                 <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Kota/Kabupaten</label>
                                 <div class="mt-2">
-                                    <input type="text" name="city" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->city}}">
+                                    <input type="text" name="city" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" value="{{auth()->user()->city}}">
                                 </div>
                             </div>
                             <div class="sm:col-span-2 sm:col-start-1">
                                 <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Kecamatan</label>
                                 <div class="mt-2">
-                                    <input type="text" name="subdistrict" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"  value="{{auth()->user()->subdistrict}}">
+                                    <input type="text" name="subdistrict" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6"  value="{{auth()->user()->subdistrict}}">
                                 </div>
                             </div>
                             
                             <div class="sm:col-span-2">
                                 <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Kelurahan</label>
                                 <div class="mt-2">
-                                    <input type="text" name="ward" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->ward}}">
+                                    <input type="text" name="ward" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" value="{{auth()->user()->ward}}">
                                 </div>
                             </div>
                             
                             <div class="sm:col-span-2">
                                 <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Kode Pos</label>
                                 <div class="mt-2">
-                                    <input type="text" name="zip" id="postal-code" autocomplete="postal-code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->zip}}">
+                                    <input type="text" name="zip" id="postal-code" autocomplete="postal-code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" value="{{auth()->user()->zip}}">
                                 </div>
                             </div>
                             <div class="col-span-full">
                               <label for="street-address" class="block text-sm font-medium leading-6 text-gray-900">Alamat lengkap</label>
                               <div class="mt-2">
-                                <input type="text" name="street" id="street-address" autocomplete="street-address" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->street}}">
+                                <input type="text" name="street" id="street-address" autocomplete="street-address" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" value="{{auth()->user()->street}}">
                               </div>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                     </div>
                   
                     <div class="mt-6 flex items-center justify-end gap-x-6">
-                        <button type="submit" class="rounded-md bg-third px-3 py-2 text-sm font-semibold text-black shadow-sm ">Simpan</button>
+                      <button class="text-base text-white bg-third rounded-lg font-semibold py-1.5 px-8 hover:opacity-80 hover:shadow-lg transition duration-500">Simpan</button>
                     </div>
                   </div>
             </div>

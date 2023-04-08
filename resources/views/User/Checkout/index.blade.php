@@ -26,11 +26,11 @@
                     @csrf
                     <div class="mb-6">
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama lengkap</label>
-                        <input type="text" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required readonly value="{{$user->name}}">
+                        <input type="text" id="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" required readonly value="{{$user->name}}">
                     </div>
                     <div class="mb-6">
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No HP</label>
-                        <input type="text" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required readonly value="{{$user->phone_number}}">
+                        <input type="text" id="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" required readonly value="{{$user->phone_number}}">
                     </div>
 
                     <div class="border-b border-gray-900/10 ">
@@ -40,52 +40,60 @@
                             <div class="sm:col-span-2 sm:col-start-1">
                                 <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Provinsi</label>
                                 <div class="mt-2">
-                                    <input type="text" name="province" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->province}}">
+                                    <input type="text" name="province" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" value="{{auth()->user()->province}}">
                                 </div>
                             </div>
                             
                             <div class="sm:col-span-2">
                                 <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Kota/Kabupaten</label>
                                 <div class="mt-2">
-                                    <input type="text" name="city" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->city}}">
+                                    <input type="text" name="city" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" value="{{auth()->user()->city}}">
                                 </div>
                             </div>
                             <div class="sm:col-span-2 sm:col-start-1">
                                 <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Kecamatan</label>
                                 <div class="mt-2">
-                                    <input type="text" name="subdistrict" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"  value="{{auth()->user()->subdistrict}}">
+                                    <input type="text" name="subdistrict" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6"  value="{{auth()->user()->subdistrict}}">
                                 </div>
                             </div>
                             
                             <div class="sm:col-span-2">
                                 <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Kelurahan</label>
                                 <div class="mt-2">
-                                    <input type="text" name="ward" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->ward}}">
+                                    <input type="text" name="ward" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" value="{{auth()->user()->ward}}">
                                 </div>
                             </div>
                             
                             <div class="sm:col-span-2">
                                 <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Kode Pos</label>
                                 <div class="mt-2">
-                                    <input type="text" name="zip" id="postal-code" autocomplete="postal-code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->zip}}">
+                                    <input type="text" name="zip" id="postal-code" autocomplete="postal-code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" value="{{auth()->user()->zip}}">
                                 </div>
                             </div>
                             <div class="col-span-full">
                               <label for="street-address" class="block text-sm font-medium leading-6 text-gray-900">Alamat lengkap</label>
                               <div class="mt-2">
-                                <input type="text" name="street" id="street-address" autocomplete="street-address" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->street}}">
+                                <input type="text" name="street" id="street-address" autocomplete="street-address" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" value="{{auth()->user()->street}}">
                               </div>
                             </div>
                         </div>
                       </div>
                     <div class="mb-6 mt-6">
-                        <label for="email" class="block mb-2 text-sm font-semibold text-gray-900">Pilih Pengiriman</label>
-                        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Total harga</label>
+                        <input type="text" id="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" required readonly value="{{$user->name}}">
+                    </div>
+                    <div class="mb-6 mt-6">
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Pilih ekspedisi pengiriman</label>
+                        <select id="countries" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6">
                             <option selected>Pengiriman</option>
                             @foreach ($expeditions as $expedition)
                                 <option value="{{$expedition->name}}">{{$expedition->name}}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="mb-6 mt-6">
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Bukti pembayaran</label>
+                        <input class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" id="default_size" type="file" name="paymentreceipt">
                     </div>
                     <button class="text-base text-white bg-third rounded-lg font-semibold py-1.5 px-8 hover:opacity-80 hover:shadow-lg transition duration-500">Selesai</button>
                 </form>
