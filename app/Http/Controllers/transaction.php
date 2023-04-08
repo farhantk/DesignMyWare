@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\order;
+use App\Models\expedition;
 use Illuminate\Support\Facades\Http;
 
 class transaction extends Controller
 {
+    public function view_checkout(){
+        $expeditions = expedition::all();
+        return view('User.Checkout.index', compact('expeditions'));
+    }
     public function index(){
         $transaction = order::where('id', 1)->first();
         $api_key = '33aab934c83c7d3f23a5e1f6e055efdc6f6653284770962e8d4711c46f9d2aa0';

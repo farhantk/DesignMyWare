@@ -25,6 +25,14 @@
             with font-awesome or any other icon font library -->
         <li class="nav-header"><b>Produk</b></li>
         <li class="nav-item">
+            <a href="/admin/expedition" class="nav-link">
+                <i class="nav-icon far fa-envelope"></i>
+                <p>
+                    Ekspedisi
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="/admin/product" class="nav-link">
                 <i class="nav-icon far fa-envelope"></i>
                 <p>
