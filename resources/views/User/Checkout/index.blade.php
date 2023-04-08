@@ -22,8 +22,63 @@
         </h1>
         <div class="grid grid-cols-3 gap-4">
             <div class="col-span-2 border border-gray-200 rounded-lg shadow p-10">           
-                <form>
+                <form action="user/checkout" method="post">
+                    @csrf
                     <div class="mb-6">
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama lengkap</label>
+                        <input type="text" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required readonly value="{{$user->name}}">
+                    </div>
+                    <div class="mb-6">
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No HP</label>
+                        <input type="text" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required readonly value="{{$user->phone_number}}">
+                    </div>
+
+                    <div class="border-b border-gray-900/10 ">
+                        <h2 class="text-base font-semibold leading-7 text-gray-900">Alamat</h2>
+                  
+                        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                            <div class="sm:col-span-2 sm:col-start-1">
+                                <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Provinsi</label>
+                                <div class="mt-2">
+                                    <input type="text" name="province" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->province}}">
+                                </div>
+                            </div>
+                            
+                            <div class="sm:col-span-2">
+                                <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Kota/Kabupaten</label>
+                                <div class="mt-2">
+                                    <input type="text" name="city" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->city}}">
+                                </div>
+                            </div>
+                            <div class="sm:col-span-2 sm:col-start-1">
+                                <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Kecamatan</label>
+                                <div class="mt-2">
+                                    <input type="text" name="subdistrict" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"  value="{{auth()->user()->subdistrict}}">
+                                </div>
+                            </div>
+                            
+                            <div class="sm:col-span-2">
+                                <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Kelurahan</label>
+                                <div class="mt-2">
+                                    <input type="text" name="ward" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->ward}}">
+                                </div>
+                            </div>
+                            
+                            <div class="sm:col-span-2">
+                                <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Kode Pos</label>
+                                <div class="mt-2">
+                                    <input type="text" name="zip" id="postal-code" autocomplete="postal-code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->zip}}">
+                                </div>
+                            </div>
+                            <div class="col-span-full">
+                              <label for="street-address" class="block text-sm font-medium leading-6 text-gray-900">Alamat lengkap</label>
+                              <div class="mt-2">
+                                <input type="text" name="street" id="street-address" autocomplete="street-address" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{auth()->user()->street}}">
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    <div class="mb-6 mt-6">
                         <label for="email" class="block mb-2 text-sm font-semibold text-gray-900">Pilih Pengiriman</label>
                         <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option selected>Pengiriman</option>
@@ -32,17 +87,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="mb-6">
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-                        <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
-                    </div>
-                    <div class="flex items-start mb-6">
-                        <div class="flex items-center h-5">
-                        <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required>
-                    </div>
-                        <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
-                    </div>
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+                    <button class="text-base text-white bg-third rounded-lg font-semibold py-1.5 px-8 hover:opacity-80 hover:shadow-lg transition duration-500">Selesai</button>
                 </form>
             </div>
             <div class="">

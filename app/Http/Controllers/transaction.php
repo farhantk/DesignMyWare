@@ -5,13 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\order;
 use App\Models\expedition;
+use App\Models\User;
 use Illuminate\Support\Facades\Http;
 
 class transaction extends Controller
 {
     public function view_checkout(){
         $expeditions = expedition::all();
-        return view('User.Checkout.index', compact('expeditions'));
+        $user = auth()->user();
+        return view('User.Checkout.index', compact('expeditions', 'user'));
+    }
+    public function checkout(){
+        $validatedData = $request->validate([
+            'name' => 'required|max:255|min:4',
+            'phone_number' => 'required|max:14|min:4',
+            'province' => 'required|max:50|min:4',
+            'city' => 'required|max:50|min:4',
+            'subdistrict' => 'required|max:50|min:4',
+            'ward' => 'required|max:50|min:4',
+            'zip' => 'required|max:10|min:4',
+            'street' => 'required|max:255|min:10',
+        ]);
+        User::where('id',auth()->user()->id)
+            ->update($validatedData);
+        /*
+        order::where('id',auth()->user()->id)
+            ->update($validatedData);
+        */
+        return view('User.Checkout.index', compact('expeditions', 'user'));
     }
     public function index(){
         $transaction = order::where('id', 1)->first();
