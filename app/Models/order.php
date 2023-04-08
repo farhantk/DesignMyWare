@@ -24,4 +24,7 @@ class order extends Model
     public function User(){
         return $this->hasMany(User::class);
     }
+    public function expedition(){
+        return $this->belongsTo(expedition::class);
+    }
 }
