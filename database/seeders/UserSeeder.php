@@ -22,7 +22,6 @@ class UserSeeder extends Seeder
             'subdistrict' => 'Cibiru',
             'ward' => 'Cipadung',
             'zip' => '60614',
-            'pesanan_id' => 1,
             'password' => Hash::make('password'),
         ]);
         DB::table('users')->insert([

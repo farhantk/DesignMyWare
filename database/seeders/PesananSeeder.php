@@ -17,22 +17,5 @@ class PesananSeeder extends Seeder
             'status' => '0',
             'user_id' => 1
         ]);
-
-
-        DB::table('pesanans')->insert([
-            'status' => '0',
-            'user_id' => 2
-        ]);
-
-        DB::table('pesanans')->insert([
-            'status' => '0',
-            'user_id' => 3
-        ]);
-
-        DB::table('pesanans')->insert([
-            'status' => '0',
-            'user_id' => 2
-        ]);
-
     }
 }
