@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('nomor')->nullable();
             $table->integer('product_id');
             $table->integer('pesanan_id');
+            $table->integer('harga_nego');
+            $table->integer('status');
             $table->timestamps();
         });
     }

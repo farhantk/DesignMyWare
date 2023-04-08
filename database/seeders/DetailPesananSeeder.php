@@ -19,7 +19,8 @@ class DetailPesananSeeder extends Seeder
             'nama' => 'budi',
             'nomor' => '08652123333',
             'product_id' => 1,
-            'pesanan_id'=> 1
+            'pesanan_id'=> 1,
+            'status'=> 1
         ]);
 
         DB::table('pesanan_details')->insert([
@@ -28,7 +29,8 @@ class DetailPesananSeeder extends Seeder
             'nama' => 'Reynhard',
             'nomor' => '085242159389',
             'product_id' => 3,
-            'pesanan_id'=> 2
+            'pesanan_id'=> 2,
+            'status'=> 1
         ]);
 
         DB::table('pesanan_details')->insert([
@@ -37,7 +39,8 @@ class DetailPesananSeeder extends Seeder
             'nama' => 'wahyu',
             'nomor' => '08654325711',
             'product_id' => 5,
-            'pesanan_id'=> 3
+            'pesanan_id'=> 3,
+            'status'=> 1
         ]);
 
         DB::table('pesanan_details')->insert([
@@ -46,7 +49,8 @@ class DetailPesananSeeder extends Seeder
             'nama' => 'Reynhard',
             'nomor' => '085242159389',
             'product_id' => 3,
-            'pesanan_id'=> 4
+            'pesanan_id'=> 4,
+            'status'=> 1
         ]);
 
     }

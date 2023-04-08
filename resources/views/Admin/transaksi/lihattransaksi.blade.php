@@ -16,6 +16,7 @@
                 <th scope="col" class="px-6 py-3">Jumlah</th>
                 <th scope="col" class="px-6 py-3">Harga</th>
                 <th scope="col" class="px-6 py-3">Total Harga</th>
+                <th scope="col" class="px-6 py-3">Negosiasi</th>
                 <th scope="col" class="px-6 py-3">Hapus</th>
               </tr>
             </thead>
@@ -44,6 +45,18 @@
                       </td>
                       <td class="px-6 py-4">
                           {{ $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}
+                      </td>
+                      <td class="px-6 py-4">
+                        @if ($pesanan_detail->harga_nego)
+                          {{ $pesanan_detail->harga_nego }}
+                          <form method="POST" action="{{ route('admin.setuju', $pesanan_detail->id) }}">
+                            @csrf
+                            <input type="hidden" name="harga" value="{{ $pesanan_detail->harga_nego }}">
+                            <button type="submit" class="btn btn-success">Setuju</button>
+                          </form>
+                        @else
+                          {{ $pesanan_detail->harga }}
+                        @endif
                       </td>
                       <td class="px-6 py-4">
                           <a href="/admin/transaksi/{{ $pesanan_detail->pesanan_id}}/destroy">Hapus</a>

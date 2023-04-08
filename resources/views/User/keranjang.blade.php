@@ -49,6 +49,9 @@
                             Total Harga
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Negosiasi
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Status
                         </th>
                     </tr>
@@ -74,28 +77,35 @@
                                     {{ $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}
                                 </td>
                                 <td class="px-6 py-4">
+                                    <form action="{{ route('pesanan_detail.negosiasi', $pesanan_detail->id) }}" method="POST">
+                                      @csrf
+                                      <input type="number" name="harga" value="{{ $pesanan_detail->harga }}" />
+                                      <button type="submit">Kirim</button>
+                                    </form>
+                                  </td>
+                                  <td class="px-6 py-4">
                                     <label class="label label-success">
-                                        @switch($pesanan_detail->status)
-                                            @case(1)
-                                                Negosiasi
-                                                @break
-                                            @case(2)
-                                                Dikemas
-                                                @break
-                                            @case(3)
-                                                Dikirim
-                                                @break
-                                            @case(4)
-                                                Diterima
-                                                @break
-                                            @case(5)
-                                                Selesai
-                                                @break
-                                            @default
-                                                Status tidak ditemukan
-                                        @endswitch
+                                      @switch($pesanan_detail->status)
+                                        @case(1)
+                                          Negosiasi
+                                          @break
+                                        @case(2)
+                                          Dikemas
+                                          @break
+                                        @case(3)
+                                          Dikirim
+                                          @break
+                                        @case(4)
+                                          Diterima
+                                          @break
+                                        @case(5)
+                                          Selesai
+                                          @break
+                                        @default
+                                          Status tidak ditemukan
+                                      @endswitch
                                     </label>
-                                </td>
+                                  </td>
                             </tr>
                         @endforeach
                     @empty
