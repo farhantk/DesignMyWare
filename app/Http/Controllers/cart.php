@@ -33,4 +33,16 @@ class Cart extends Controller
         
     }
 
+    public function negosiasi($id, Request $request){
+        $pesanan_detail = PesananDetail::find($id);        
+        $hargaBaru = $request->input('harga');
+        $hargaLama = $pesanan_detail->harga;
+        $pesanan_detail->harga_nego = $hargaBaru;
+        $pesanan_detail->status = 1; // Menandai status negosiasi
+        $pesanan_detail->save();
+        
+        return redirect()->back()->with('success', 'Harga berhasil dinegosiasi. Silakan tunggu konfirmasi dari admin.');
+
+    }
+
 }

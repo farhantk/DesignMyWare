@@ -34,4 +34,26 @@ class transaksi extends Controller
         ]);
     }
 
+    public function setuju(Request $request, $id)
+    {
+        $pesanan_detail = PesananDetail::findOrFail($id);
+  
+        if ($request->input('harga')) {
+            $pesanan_detail->harga = $pesanan_detail->harga_nego;
+            $pesanan_detail->harga_nego = null;
+            $pesanan_detail->status = 2; // Menandai status disetujui
+
+            // Tambahkan validasi harga_nego sebelum disimpan
+            if (!$pesanan_detail->harga_nego) {
+                return redirect()->back()->with('error', 'Tidak ada tawaran harga yang diajukan.');
+            }
+
+            $pesanan_detail->save();
+
+            return redirect()->back()->with('success', 'Harga berhasil disetujui. Silakan bayar harga yang disetujui.');
+        } else {
+            return redirect()->back()->with('error', 'Tidak ada tawaran harga yang diajukan.');
+        }
+    }
+
 }
