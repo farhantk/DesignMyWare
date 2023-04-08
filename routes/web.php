@@ -24,7 +24,7 @@ use App\Http\Controllers\transaksi;
 */
 //user auth
 Route::get('/', [UserAuth::class, 'view']);
-Route::get('/signin', [UserAuth::class, 'view_SignIn'])->middleware('guest');
+Route::get('/signin', [UserAuth::class, 'view_SignIn'])->middleware('guest')->name('login');
 Route::post('/signin', [UserAuth::class, 'SignIn']);
 Route::get('/signup', [UserAuth::class, 'view_SignUp'])->middleware('guest');
 Route::post('/signup', [UserAuth::class, 'SignUp']);
@@ -38,6 +38,8 @@ Route::get('/user/checkout', [transaction::class, 'view_checkout'])->middleware(
 Route::get('/user/transaction', [transaction::class, 'index'])->middleware('auth');
 Route::get('/user/transaction/{orderid}/detail', [transaction::class, 'detail'])->middleware('auth');
 Route::get('/user/transaction/{orderid}/invoice', [transaction::class, 'invoice'])->middleware('auth');
+
+
 // Admin
 Route::get('/admin/signin', [AdminAuth::class, 'index'])->middleware('guest');
 Route::post('/admin/signin', [AdminAuth::class, 'adminSignIn']);
