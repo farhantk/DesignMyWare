@@ -1,13 +1,63 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  </body>
-</html>
+<div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Data Transaksi</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+          <table class="table table-hover text-nowrap">
+            <thead>
+              <tr>
+                <th scope="col" class="px-6 py-3">No</th>
+                <th scope="col" class="px-6 py-3">Nama</th>
+                <th scope="col" class="px-6 py-3">Handphone</th>
+                <th scope="col" class="px-6 py-3">Nama Barang</th>
+                <th scope="col" class="px-6 py-3">Jumlah</th>
+                <th scope="col" class="px-6 py-3">Harga</th>
+                <th scope="col" class="px-6 py-3">Total Harga</th>
+                <th scope="col" class="px-6 py-3">Hapus</th>
+              </tr>
+            </thead>
+            <tbody>
+                <?php $no = 1 ?>
+                @forelse ($pesanan_details as $pesanan_detail)
+                    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{$no++}}
+                        </th>
+                        <td class="px-6 py-4">
+                            {{ $pesanan_detail->nama}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $pesanan_detail->nomor}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $pesanan_detail->product->name}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $pesanan_detail->jumlah_pesanan}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $pesanan_detail->product->price}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="6">Data Kosong</td>
+                    </tr>
+                @endforelse  
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>

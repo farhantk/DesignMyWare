@@ -64,6 +64,9 @@
                       <li>
                         <a href="/user/transaction" class="block px-4 py-2 hover:bg-gray-100">Transaksi</a>
                       </li>
+                      <li>
+                        <a href="/user/cart" class="block px-4 py-2 hover:bg-gray-100">Daftar Pesanan</a>
+                      </li>
                     </ul>
                     <div class="py-2" >
                       <form  action="/signout" method="post">

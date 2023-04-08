@@ -18,7 +18,7 @@ return new class extends Migration
             $table->boolean('nameset')->default(false);
             $table->string('nama')->nullable();
             $table->string('nomor')->nullable();
-            $table->integer('product id');
+            $table->integer('product_id');
             $table->integer('pesanan_id');
             $table->timestamps();
         });
