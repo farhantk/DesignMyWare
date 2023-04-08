@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\order;
 use App\Models\expedition;
+use App\Models\Pesanan;
 use App\Models\User;
 use Illuminate\Support\Facades\Http;
 
@@ -15,8 +16,9 @@ class transaction extends Controller
         $user = auth()->user();
         return view('User.Checkout.index', compact('expeditions', 'user'));
     }
-    public function checkout(){
+    public function checkout(Request $request, $cart_id){
         $validatedData = $request->validate([
+            'paymenreceipt' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
             'name' => 'required|max:255|min:4',
             'phone_number' => 'required|max:14|min:4',
             'province' => 'required|max:50|min:4',
@@ -25,14 +27,22 @@ class transaction extends Controller
             'ward' => 'required|max:50|min:4',
             'zip' => 'required|max:10|min:4',
             'street' => 'required|max:255|min:10',
+            'courier' => 'required',
         ]);
+        $validatedData['paymenreceipt'] = $request->file('paymenreceipt')->store('post-image');
+        $pesanan = Pesanan::where('id', $cart_id)->get();
         User::where('id',auth()->user()->id)
             ->update($validatedData);
-        /*
-        order::where('id',auth()->user()->id)
-            ->update($validatedData);
-        */
-        return view('User.Checkout.index', compact('expeditions', 'user'));
+        order::create([
+            'user_id'=> auth()->user()->id,
+            'expedition'=> $validatedData['expedition'],
+            'paymenreceipt'=> $validatedData['paymenreceipt'],
+            'courier_id'=> $validatedData['courier'],
+            'cart_id'=> $cart_id,
+            'status'=> 'Menunggu konfirmasi',
+        ]);
+
+        return redirect('user/cart');
     }
     public function index(){
         $transaction = order::where('id', 1)->first();

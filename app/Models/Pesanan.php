@@ -16,4 +16,8 @@ class Pesanan extends Model
     {
         return $this->belongsTo(User::class,'id','user_id');
     }
+    public function order()
+    {
+        return $this->belongsTo(order::class);
+    }
 }

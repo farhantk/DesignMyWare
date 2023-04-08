@@ -16,10 +16,8 @@ return new class extends Migration
             $table->integer('jumlah_pesanan');
             $table->integer('total_harga');
             $table->boolean('nameset')->default(false);
-            $table->string('nama')->nullable();
-            $table->string('nomor')->nullable();
-            $table->integer('product_id');
-            $table->integer('pesanan_id');
+            $table->foreignId('product_id');
+            $table->foreignId('pesanan_id');
             $table->timestamps();
         });
     }

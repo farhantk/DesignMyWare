@@ -13,10 +13,8 @@ class order extends Model
         'user_id',
         'product_id',
         'status',
-        'courir',
+        'courier',
         'receipt_code',
-        'total_price',
-        'expected_price',
         'paymentreceipt'
     ];
     public function product(){
