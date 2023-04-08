@@ -16,10 +16,13 @@ class Cart extends Controller
     public function view_keranjang()
     {
         if (Auth::user()){
-            $this->pesanan = pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
-            if ($this->pesanan)
-            {
-                $this->pesanan_details = pesanandetail::where('pesanan_id', $this->pesanan->id)->get();
+            $this->pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status',0)->get();
+            if($this->pesanan->isNotEmpty()){
+                foreach($this->pesanan as $pesanan){
+                    $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+                    $this->pesanan_details[$pesanan->id] = $pesanan_details;
+
+                }
             }
         }
 
