@@ -49,33 +49,55 @@
                             Total Harga
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Hapus
+                            Status
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $no = 1 ?>
-                    @forelse ($pesanan_details as $pesanan_detail)
-                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{$no++}}
-                            </th>
-                            <td class="px-6 py-4">
-                                {{ $pesanan_detail->product->name}}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $pesanan_detail->jumlah_pesanan}}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $pesanan_detail->product->price}}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            </td>
-                        </tr>
+                    @forelse ($pesanan_details as $pesanan_id => $pesanan_details_per_id)
+                        @foreach ($pesanan_details_per_id as $pesanan_detail)
+                            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{$no++}}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $pesanan_detail->product->name}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $pesanan_detail->jumlah_pesanan}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $pesanan_detail->product->price}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <label class="label label-success">
+                                        @switch($pesanan_detail->status)
+                                            @case(1)
+                                                Negosiasi
+                                                @break
+                                            @case(2)
+                                                Dikemas
+                                                @break
+                                            @case(3)
+                                                Dikirim
+                                                @break
+                                            @case(4)
+                                                Diterima
+                                                @break
+                                            @case(5)
+                                                Selesai
+                                                @break
+                                            @default
+                                                Status tidak ditemukan
+                                        @endswitch
+                                    </label>
+                                </td>
+                            </tr>
+                        @endforeach
                     @empty
                         <tr>
                             <td colspan="6">Data Kosong</td>

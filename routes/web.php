@@ -52,3 +52,5 @@ Route::get('/admin/variant', [variant::class, 'index'])->middleware('admin');
 Route::get('/user/cart', [Cart::class, 'view_keranjang'])->middleware('auth');
 // Route::get('/admin/')
 Route::get('/admin/transaksi', [transaksi::class, 'view_transaksi'])->middleware('admin');
+//Route::delete('/admin/pesanan-detail/{id}', [transaksi::class, 'destroy'])->name('pesanan-detail.destroy');
+Route::get('/admin/transaksi/{id}/destroy', [transaksi::class, 'destroy'])->middleware('admin');

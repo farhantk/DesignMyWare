@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('kode_pesanan');
             $table->string('status')->default(0);
-            $table->integer('total_harga');
-            $table->integer('kode_unik');
             $table->integer('user_id');
             $table->timestamps();
         });
