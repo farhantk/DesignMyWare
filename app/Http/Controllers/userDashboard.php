@@ -12,8 +12,10 @@ class userDashboard extends Controller
     }
 
     public function edit(Request $request){
+
         $validatedData = $request->validate([
             'name' => 'required|max:255',
+            'photo' => 'file|image|mimes:jpeg,png,jpg|max:2048',
             'phone_number' => 'max:14',
             'province' => 'max:50',
             'city' => 'max:50',
@@ -22,6 +24,9 @@ class userDashboard extends Controller
             'zip' => 'max:10',
             'street' => 'max:255',
         ]);
+        if($request->file('photo')){
+            $validatedData['photo'] = $request->file('photo')->store('post-image');
+        }
         User::where('id',auth()->user()->id)
             ->update($validatedData);
 

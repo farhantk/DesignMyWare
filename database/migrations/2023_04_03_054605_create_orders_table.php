@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('receipt_code');
             $table->integer('total_price');
             $table->integer('expected_price');
+            $table->integer('paymentreceipt');
             $table->timestamps();
         });
     }
