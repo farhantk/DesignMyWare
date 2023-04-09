@@ -21,18 +21,33 @@
         <div class="pt-10 bg-white flex p w-full border border-gray-200 rounded-lg shadow ">
             <div class="p-10 text-2xl font-bold">
                 <h1>Daftar transaksi</h1>
+                @foreach($transactions as $transaction)
+                    <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{$transaction->created_at}}</h5>
+                        <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside">
+                            @foreach($transaction-> as $detail)
+                            <li>
+                                {{$detail}}
+                            </li>
+                            @endforeach
+                        </ul>
+                        <p class="mb-3 font-normal text-gray-700">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                            Read more
+                            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </a>
+                    </div>
+                @endforeach
                 <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="text-base text-white bg-third rounded-lg font-semibold py-1.5 px-8 hover:opacity-80 hover:shadow-lg transition duration-500">Lacak</button>
 
             </div>
            <!-- This is an example component -->
         </div>
         <!-- Default Modal -->
-        <!-- Main modal -->
+        <!-- Main modal 
         <div id="defaultModal" tabindex="-1" aria-hidden="true" class="drop-shadow-2xl fixed inset-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
             <div class="relative w-full h-full max-w-2xl md:h-auto bg-white overflow-y-auto">
-                <!-- Modal content -->
                 <div class="relative rounded-lg">
-                    <!-- Modal header -->
                     <div class="flex items-start justify-between p-4 border-b rounded-t">
                         <h3 class="text-xl font-semibold text-gray-900">
                             Info pengiriman
@@ -42,31 +57,30 @@
                             <span class="sr-only">Close modal</span>
                         </button>
                     </div>
-                    <!-- Modal body -->
                     <div class="items-start justify-between p-4 border-b rounded-t">
                         <h3 class="text-m font-medium text-gray-900">
-                            Kurir   : {{ $track['data']['summary']['courier'] }} {{ $track['data']['summary']['service'] }}
+                            Kurir   : {/{ //$track['data']['summary']['courier'] }} {/{ //$track['data']['summary']['service'] }}
                         </h3>
                         <h3 class="text-m font-medium text-gray-900">
-                            No resi : {{ $track['data']['summary']['awb'] }}
+                            No resi : {/{ //$track['data']['summary']['awb'] }}
                         </h3>
                         <h3 class="text-m font-medium text-gray-900">
-                            Alamat  : {{ $track['data']['detail']['destination'] }}
+                            Alamat  : {/{ //$track['data']['detail']['destination'] }}
                         </h3>
                     </div>
-                    <!-- Modal body -->
                     <div class="flex w-full px-10 rounded-b">
                         <ol class="relative text-gray-500 border-l border-gray-200 px-10 pt-10 inset-0">
-                            @foreach($track['data']['history'] as $history)                  
+                            foreach($track['data']['history'] as $history)                  
                                 <li class="mb-2 ml-6">            
                                     <span class="absolute flex items-center justify-center w-3 h-3 bg-green-200 rounded-full -left-2 ring-4 ring-third"></span>
-                                    <h3 class="font-medium leading-tight -left-2">{{ $history['date'] }}</h3>
-                                    <p class="text-sm -left-2">{{ $history['desc'] }}</p>
+                                    <h3 class="font-medium leading-tight -left-2">{/{ $history['date'] }}</h3>
+                                    <p class="text-sm -left-2">{/{ $history['desc'] }}</p>
                                 </li>
-                            @endforeach
+                            endforeach
                         </ol>
                     </div> 
                 </div>
+                -->
             </div>
         </div>
     </section>   

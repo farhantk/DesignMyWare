@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->integer('jumlah_pesanan');
             $table->integer('total_harga');
-            $table->boolean('nameset')->default(false);
             $table->foreignId('product_id');
             $table->foreignId('pesanan_id');
             $table->foreignId('status')->default(0);
@@ -25,7 +24,6 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
