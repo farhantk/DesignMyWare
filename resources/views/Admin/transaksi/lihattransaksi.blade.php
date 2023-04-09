@@ -17,6 +17,7 @@
                 <th scope="col" class="px-6 py-3">Harga</th>
                 <th scope="col" class="px-6 py-3">Total Harga</th>
                 <th scope="col" class="px-6 py-3">Negosiasi</th>
+                <th scope="col" class="px-6 py-3">Status Negosiasi</th>
                 <th scope="col" class="px-6 py-3">Hapus</th>
               </tr>
             </thead>
@@ -46,24 +47,26 @@
                       <td class="px-6 py-4">
                           {{ $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}
                       </td>
-                      <td class="px-6 py-4">
-                        @if ($pesanan_detail->harga_nego)
-                            {{ $pesanan_detail->harga_nego }}
-                            <form method="POST" action="{{ route('pesanan_detail.negosiasi', $pesanan_detail->id) }}">
-                                @csrf
-                                <input type="hidden" name="harga" value="{{ $pesanan_detail->harga_nego }}">
-                                <select name="status_nego">
-                                    <option value="2">Accepted</option>
-                                    <option value="-1">Rejected</option>
-                                </select>
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </form>
-                        @else
-                            {{ $pesanan_detail->harga }}
-                        @endif
+                      <td>
+                        {{ $pesanan_detail->harga }}
                       </td>
                       <td class="px-6 py-4">
-                          <a href="/admin/transaksi/{{ $pesanan_detail->pesanan_id}}/destroy">Hapus</a>
+                        <form action="{{ route('admin.setuju', $pesanan_detail->id) }}" method="POST">
+                          @csrf
+                          @method('PATCH')
+                          <select name="negotiation_status">
+                            <option value="1">Accept</option>
+                            <option value="0">Reject</option>
+                          </select>
+                          <button type="submit" class="btn btn-success">Submit</button>
+                        </form>
+                      </td>
+                      <td>
+                        <form action="{{ route('admin.hapus', $pesanan_detail->id) }}" method="POST">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger">Hapus</button>
+                        </form>
                       </td>
                   </tr>
                   @endforeach

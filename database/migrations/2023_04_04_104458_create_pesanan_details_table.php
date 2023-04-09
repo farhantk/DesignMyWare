@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('product_id');
             $table->foreignId('pesanan_id');
             $table->foreignId('status')->default(0);
-            $table->integer('status_nego')->default(0);
+            $table->string('status_nego')->default("-");
             $table->integer('harga_nego')->default(0);
             $table->integer('harga')->default(0);
             $table->timestamps();
