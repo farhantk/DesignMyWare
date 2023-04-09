@@ -82,6 +82,10 @@ class transaction extends Controller
 
         return redirect('user/cart');
     }
+    public function remove_item($itemId){
+        PesananDetail::destroy($itemId);
+        return redirect('/user/checkout');
+    }
     public function index(){
         //$transactions = order::where('user_id', auth()->user()->id)->get();
 
@@ -97,16 +101,4 @@ class transaction extends Controller
         //dd($track);
         return view('User.Transaction.index',compact('detailPesanan', 'api_key', 'orders'));
     }
-    /*
-    public function detail($orderid){
-        $transaction = order::where('id', $orderid)->first();
-        $api_key = '93287c406bf763bea8b9eace627479ef7b4137e88dadb76db3247968deece4ed';
-        $receipt_code = $transaction->receipt_code ;
-        $courir = $transaction->courir ;
-        //$res = Http::get('https://api.binderbyte.com/v1/track?api_key='.$api_key.'&courier='.$courir.'&awb='.$receipt_code);
-        //$data = json_decode($res, true);
-        dd($data);
-        return view('User.Transaction.detail',  compact('data'));
-    }
-    */
 }

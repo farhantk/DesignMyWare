@@ -38,8 +38,7 @@ Route::get('/user/checkout', [transaction::class, 'view_checkout'])->middleware(
 Route::post('/user/checkout', [transaction::class, 'checkout'])->middleware('auth');
 
 Route::get('/user/transaction', [transaction::class, 'index'])->middleware('auth');
-Route::get('/user/transaction/{orderid}/detail', [transaction::class, 'detail'])->middleware('auth');
-Route::get('/user/transaction/{orderid}/invoice', [transaction::class, 'invoice'])->middleware('auth');
+Route::delete('/user/transaction/{itemId}/remove', [transaction::class, 'remove_item'])->middleware('auth');
 
 // //Keranjang
 Route::get('/user/cart', [Cart::class, 'view_keranjang'])->middleware('auth');

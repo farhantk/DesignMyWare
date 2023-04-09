@@ -52,8 +52,9 @@
                                     Rp. {{$detail->product->price * $detail->jumlah_pesanan}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <form action="">
+                                    <form action="/user/transaction/{{$detail->id}}/remove" method="POST">
                                         @csrf
+                                        @method('DELETE')
                                         <a class="font-medium text-red-600 hover:underline"><button type="submit">Hapus</button></a>
                                     </form>
                                 </td>
