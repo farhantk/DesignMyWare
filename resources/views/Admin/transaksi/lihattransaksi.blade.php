@@ -2,7 +2,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Data Transaksi</h3>
+          <h3 class="card-title">Daftar Permintaan</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive p-0">
@@ -48,14 +48,18 @@
                       </td>
                       <td class="px-6 py-4">
                         @if ($pesanan_detail->harga_nego)
-                          {{ $pesanan_detail->harga_nego }}
-                          <form method="POST" action="{{ route('admin.setuju', $pesanan_detail->id) }}">
-                            @csrf
-                            <input type="hidden" name="harga" value="{{ $pesanan_detail->harga_nego }}">
-                            <button type="submit" class="btn btn-success">Setuju</button>
-                          </form>
+                            {{ $pesanan_detail->harga_nego }}
+                            <form method="POST" action="{{ route('pesanan_detail.negosiasi', $pesanan_detail->id) }}">
+                                @csrf
+                                <input type="hidden" name="harga" value="{{ $pesanan_detail->harga_nego }}">
+                                <select name="status_nego">
+                                    <option value="2">Accepted</option>
+                                    <option value="-1">Rejected</option>
+                                </select>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </form>
                         @else
-                          {{ $pesanan_detail->harga }}
+                            {{ $pesanan_detail->harga }}
                         @endif
                       </td>
                       <td class="px-6 py-4">

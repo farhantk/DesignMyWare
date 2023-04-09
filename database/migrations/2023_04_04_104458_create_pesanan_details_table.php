@@ -17,8 +17,10 @@ return new class extends Migration
             $table->integer('total_harga');
             $table->foreignId('product_id');
             $table->foreignId('pesanan_id');
-            $table->integer('harga_nego');
-            $table->integer('harga');
+            $table->foreignId('status')->default(0);
+            $table->integer('status_nego')->default(0);
+            $table->integer('harga_nego')->default(0);
+            $table->integer('harga')->default(0);
             $table->timestamps();
         });
     }
