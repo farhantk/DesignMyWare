@@ -37,28 +37,23 @@ class transaksi extends Controller
     {
         $pesanan_detail = PesananDetail::findOrFail($id);
 
-        if (!$pesanan_detail->harga_nego) {
-            return redirect()->back()->with('error', 'No price offer was submitted.');
-        }
-
         $negotiationStatus = $request->input('negotiation_status');
 
         switch ($negotiationStatus) {
             case '1': // Negotiation accepted
                 $pesanan_detail->harga_nego = $pesanan_detail->harga;
-                $pesanan_detail->harga = null;
+                $pesanan_detail->harga = 0;
                 $pesanan_detail->status_nego = 'Accept';
                 break;
             case '0': // Negotiation rejected
-                $pesanan_detail->harga_nego = $pesanan_detail->jumlah_pesanan * $pesanan_detail->harga;
-                $pesanan_detail->harga = null;
+                $pesanan_detail->harga_nego = $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price;
+                $pesanan_detail->harga = 0;
                 $pesanan_detail->status_nego = 'Reject';
                 break;
             default:
                 return redirect()->back()->with('error', 'Invalid negotiation status.');
         }
 
-       
         $pesanan_detail->save();
 
         return redirect()->back()->with('success', 'Negotiation status updated successfully.');
