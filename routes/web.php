@@ -11,6 +11,7 @@ use App\Http\Controllers\transaction;
 use App\Http\Controllers\adminExpedition;
 use App\Http\Controllers\cart;
 use App\Http\Controllers\transaksi;
+use App\Http\Controllers\adminTransaction;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,7 @@ Route::get('/user/profile', [UserDashboard::class, 'index'])->middleware('auth')
 Route::put('/user/profile', [UserDashboard::class, 'edit']);
 
 Route::get('/user/checkout', [transaction::class, 'view_checkout'])->middleware('auth');
-Route::post('/user/{cart_id}/checkout', [transaction::class, 'checkout'])->middleware('auth');
+Route::post('/user/checkout', [transaction::class, 'checkout'])->middleware('auth');
 
 Route::get('/user/transaction', [transaction::class, 'index'])->middleware('auth');
 Route::get('/user/transaction/{orderid}/detail', [transaction::class, 'detail'])->middleware('auth');
@@ -53,14 +54,16 @@ Route::get('/admin', [adminDashboard::class, 'index'])->middleware('admin');
 Route::get('/admin/product', [product::class, 'index'])->middleware('admin');
 Route::get('/admin/variant', [variant::class, 'index'])->middleware('admin');
 
+//Transaction
+Route::get('/admin/transaction', [adminTransaction::class, 'index'])->middleware('admin');
+Route::put('/admin/transaction/{orderId}/process', [adminTransaction::class, 'process'])->middleware('admin');
+Route::put('/admin/transaction/{orderId}/deliver', [adminTransaction::class, 'deliver'])->middleware('admin');
+
 //CRUD Expedition
 Route::get('/admin/expedition', [adminExpedition::class, 'index'])->middleware('admin');
 Route::post('/admin/expedition', [adminExpedition::class, 'create']);
 Route::delete('/admin/expedition/{id}/delete', [adminExpedition::class, 'delete'])->middleware('admin');
 Route::put('/admin/expedition/{id}/edit', [adminExpedition::class, 'edit'])->middleware('admin');
-
-
-
 
 
 // Route::get('/admin/')

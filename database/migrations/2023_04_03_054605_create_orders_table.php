@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('pesanan_id');
+            $table->foreignId('pesanan_id')->nullable();
             $table->foreignId('courier_id');
             $table->string('status');// [menunggu konfirmasi, diproses, dikirim, selesai]
             $table->string('receipt_code')->nullable();
-            $table->string('paymentreceipt');
+            $table->string('paymentreceipt')->nullable();
             $table->timestamps();
         });
     }
