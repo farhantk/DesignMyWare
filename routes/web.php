@@ -38,8 +38,7 @@ Route::get('/user/checkout', [transaction::class, 'view_checkout'])->middleware(
 Route::post('/user/checkout', [transaction::class, 'checkout'])->middleware('auth');
 
 Route::get('/user/transaction', [transaction::class, 'index'])->middleware('auth');
-Route::get('/user/transaction/{orderid}/detail', [transaction::class, 'detail'])->middleware('auth');
-Route::get('/user/transaction/{orderid}/invoice', [transaction::class, 'invoice'])->middleware('auth');
+Route::delete('/user/transaction/{itemId}/remove', [transaction::class, 'remove_item'])->middleware('auth');
 
 // //Keranjang
 Route::get('/user/cart', [Cart::class, 'view_keranjang'])->middleware('auth');
@@ -58,6 +57,7 @@ Route::get('/admin/variant', [variant::class, 'index'])->middleware('admin');
 Route::get('/admin/transaction', [adminTransaction::class, 'index'])->middleware('admin');
 Route::put('/admin/transaction/{orderId}/process', [adminTransaction::class, 'process'])->middleware('admin');
 Route::put('/admin/transaction/{orderId}/deliver', [adminTransaction::class, 'deliver'])->middleware('admin');
+Route::put('/admin/transaction/{orderId}/finish', [adminTransaction::class, 'finish'])->middleware('auth');
 
 //CRUD Expedition
 Route::get('/admin/expedition', [adminExpedition::class, 'index'])->middleware('admin');

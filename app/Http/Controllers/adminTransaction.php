@@ -21,10 +21,16 @@ class adminTransaction extends Controller
             'receipt_code'=>'required|min:5|max:30'
         ]);
         order::where('id', $orderId)
-            ->update(['status'=>'Dikrim',
-                      'receipt_code'=>$validetedData['receipt_code']
+            ->update(['status'=>'Dikirim',
+            'receipt_code'=>$validetedData['receipt_code']
         ]);
         return redirect('/admin/transaction');
+    }
+    public function finish($orderId){
+        order::where('id', $orderId)
+            ->where('user_id', auth()->user()->id)
+            ->update(['status'=>'Selesai']);
+        return redirect('/user/transaction');
     }
 
 }

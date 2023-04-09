@@ -9,6 +9,7 @@ class Pesanan extends Model
 {
     protected $fillable = [
         'user_id',
+        'order_id',
         'total_price',
     ];
     public function pesanan_details()
