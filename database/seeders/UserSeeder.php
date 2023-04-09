@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'city' => 'Bandung',
             'subdistrict' => 'Cibiru',
             'ward' => 'Cipadung',
+            'street' => 'Komp. sesama no 10',
             'zip' => '60614',
             'password' => Hash::make('password'),
         ]);

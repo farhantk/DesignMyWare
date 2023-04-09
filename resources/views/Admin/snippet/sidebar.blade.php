@@ -56,12 +56,21 @@
         </li>
         <li class="nav-header"><b>Transaksi</b></li>
         <li class="nav-item">
+            <a href="/admin/transaction" class="nav-link">
+                <i class="nav-icon far fa-envelope"></i>
+                <p>
+                    Semua Transaksi
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="/admin/transaksi" class="nav-link">
                 <i class="nav-icon far fa-envelope"></i>
                 <p>
                     Permintaan Negosiasi
                 </p>
             </a>
+        </li>
         </ul>
     </nav>
     <!-- /.sidebar-menu -->
