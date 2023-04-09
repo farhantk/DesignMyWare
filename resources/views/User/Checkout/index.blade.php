@@ -231,3 +231,52 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
 </body>
 </html>
+<!-- Default Modal -->
+<div id="defaultModal" tabindex="-1" aria-hidden="true" class="drop-shadow-2xl fixed inset-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+    @php
+        $response = Http::get('https://api.binderbyte.com/v1/track?api_key='.$api_key.'&courier='.$detail->pesanan->order->courier->name.'&awb='.$detail->pesanan->order->receipt_code);
+        $track = json_decode($response, true);
+        dd($track);
+    @endphp
+
+    @if($response->ok())
+        <div class="relative w-full h-full max-w-2xl md:h-auto bg-white overflow-y-auto">
+            <div class="relative rounded-lg">
+                <div class="flex items-start justify-between p-4 border-b rounded-t">
+                    <h3 class="text-xl font-semibold text-gray-900">
+                        Info pengiriman
+                    </h3>
+                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="defaultModal">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <div class="items-start justify-between p-4 border-b rounded-t">
+                    <h3 class="text-m font-medium text-gray-900">
+                        Kurir   : {{ $track['data']['summary']['courier'] }} {{ $track['data']['summary']['service'] }}
+                    </h3>
+                    <h3 class="text-m font-medium text-gray-900">
+                        No resi : {{ $track['data']['summary']['awb'] }}
+                    </h3>
+                    <h3 class="text-m font-medium text-gray-900">
+                        Alamat  : {{ $track['data']['detail']['destination'] }}
+                    </h3>
+                </div>
+                <div class="flex w-full px-10 rounded-b">
+                    <ol class="relative text-gray-500 border-l border-gray-200 px-10 pt-10 inset-0">
+                        @foreach($track['data']['history'] as $history)                  
+                            <li class="mb-2 ml-6">            
+                                <span class="absolute flex items-center justify-center w-3 h-3 bg-green-200 rounded-full -left-2 ring-4 ring-third"></span>
+                                <h3 class="font-medium leading-tight -left-2">{{ $history['date'] }}</h3>
+                                <p class="text-sm -left-2">{{ $history['desc'] }}</p>
+                            </li>
+                        @endforeach
+                    </ol>
+                </div> 
+            </div>
+        </div>
+    @else
+        <p>{{$response}}</p>
+    @endif
+    
+</div>

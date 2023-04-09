@@ -56,14 +56,11 @@ class transaction extends Controller
         //Pesanan::with(['User'=>function($query){
         //    $query->where('id', auth()->user()->id);
         //}])->get();
-        dd($detailPesanan);
-        //$api_key = '33aab934c83c7d3f23a5e1f6e055efdc6f6653284770962e8d4711c46f9d2aa0';
-        //$receipt_code = $transaction->receipt_code ;
-        //$courir = $transaction->courir ;
+        $api_key = '2dc5a1730c246c81eeca83daef396b1d7c2b2ac25676ad5a6a5f53f66e32063d';
         //$res = Http::get('https://api.binderbyte.com/v1/track?api_key='.$api_key.'&courier='.$courir.'&awb='.$receipt_code);
         //$track = json_decode($res, true);
         //dd($track);
-        return view('User.Transaction.index',compact('transactions'));
+        return view('User.Transaction.index',compact('detailPesanan', 'api_key'));
     }
     /*
     public function detail($orderid){

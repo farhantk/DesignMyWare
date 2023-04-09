@@ -23,7 +23,7 @@ class order extends Model
     public function User(){
         return $this->hasMany(User::class);
     }
-    public function expedition(){
+    public function courier(){
         return $this->belongsTo(expedition::class);
     }
 }
