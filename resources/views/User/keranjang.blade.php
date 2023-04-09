@@ -52,6 +52,9 @@
                             Negosiasi
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Status Nego
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Harga Akhir
                         </th>
                     </tr>
@@ -83,12 +86,15 @@
                                       <input type="number" name="harga" value="{{ $pesanan_detail->harga }}" />
                                       <button type="submit">Kirim</button>
                                     </form>
-                                  </td>
-                                  <td class="px-6 py-4">
-                                    {{ $pesanan_detail->harga_nego ?? $pesanan_detail->product->price }}
-                                  </td>
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $pesanan_detail->status_nego }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $pesanan_detail->harga_nego}}
+                                </td>
                             </tr>
-                            <?php $total_harga += $pesanan_detail->harga_nego ?? $pesanan_detail->product->price ?>
+                            <?php $total_harga += $pesanan_detail->harga_nego ?>
                         @endforeach
                     @empty
                         <tr>

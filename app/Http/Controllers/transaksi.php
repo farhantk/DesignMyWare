@@ -13,9 +13,8 @@ class transaksi extends Controller
 
     public function destroy($id)
     {
-        pesanandetail::where('pesanan_id',$id)->delete();
-        pesanan::where('id',$id);
-        return redirect('/admin/transaksi');
+        PesananDetail::findOrFail($id)->delete();
+        return redirect()->back()->with('success', 'Pesanan detail berhasil dihapus.');
     }
 
     public function view_transaksi(){
@@ -41,27 +40,29 @@ class transaksi extends Controller
         if (!$pesanan_detail->harga_nego) {
             return redirect()->back()->with('error', 'No price offer was submitted.');
         }
-    
-        $hargaBaru = $request->input('harga');
-        $hargaLama = $pesanan_detail->harga;
-    
+
         $negotiationStatus = $request->input('negotiation_status');
-    
+
         switch ($negotiationStatus) {
-            case '2': // Negotiation accepted
-                $pesanan_detail->harga = $hargaBaru;
-                $pesanan_detail->harga_nego = null;
-                $pesanan_detail->negotiation_status = 2;
+            case '1': // Negotiation accepted
+                $pesanan_detail->harga_nego = $pesanan_detail->harga;
+                $pesanan_detail->harga = null;
+                $pesanan_detail->status_nego = 'Accept';
                 break;
-            case '-1': // Negotiation rejected
-                $pesanan_detail->negotiation_status = -1;
+            case '0': // Negotiation rejected
+                $pesanan_detail->harga_nego = $pesanan_detail->jumlah_pesanan * $pesanan_detail->harga;
+                $pesanan_detail->harga = null;
+                $pesanan_detail->status_nego = 'Reject';
                 break;
             default:
                 return redirect()->back()->with('error', 'Invalid negotiation status.');
         }
-    
+
+       
         $pesanan_detail->save();
-    
+
         return redirect()->back()->with('success', 'Negotiation status updated successfully.');
     }
+
+    
 }
