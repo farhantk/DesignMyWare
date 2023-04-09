@@ -50,19 +50,18 @@ class transaction extends Controller
             $totalPrice = $totalPrice + $price;
         }
         // Buat Table order
-        order::create([
+        $newOrder = order::create([
             'user_id'=> auth()->user()->id,
-            'pesanan_id'=> 1,
             'paymentreceipt'=> $validatedData['paymentreceipt'],
             'courier_id'=> $validatedData['courier'],
             'pesanan_id'=> $pesanan->id,
-            'status'=> 'Menunggu konfirmasi',
             'status'=> 'Menunggu konfirmasi',
         ]);
         // Memutus relasi pesanan lama dengan user
         Pesanan::where('user_id', auth()->user()->id)->first()
                 ->update([
                     'user_id' => null,
+                    'order_id' =>  $newOrder->id,
                     'total_price'=>$totalPrice
                 ]);
         // membuat relasi pesanan baru dengan user
@@ -85,19 +84,18 @@ class transaction extends Controller
     }
     public function index(){
         //$transactions = order::where('user_id', auth()->user()->id)->get();
+
         $detailPesanan = PesananDetail::with(['Pesanan'=>function($query){
             $query->with(['User'=>function($query){
                 $query->where('id', auth()->user()->id);
             }]);
         }])->get();
-        //Pesanan::with(['User'=>function($query){
-        //    $query->where('id', auth()->user()->id);
-        //}])->get();
+        $orders = order::where('user_id', auth()->user()->id)->get();
         $api_key = '2dc5a1730c246c81eeca83daef396b1d7c2b2ac25676ad5a6a5f53f66e32063d';
         //$res = Http::get('https://api.binderbyte.com/v1/track?api_key='.$api_key.'&courier='.$courir.'&awb='.$receipt_code);
         //$track = json_decode($res, true);
         //dd($track);
-        return view('User.Transaction.index',compact('detailPesanan', 'api_key'));
+        return view('User.Transaction.index',compact('detailPesanan', 'api_key', 'orders'));
     }
     /*
     public function detail($orderid){
