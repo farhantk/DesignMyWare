@@ -36,24 +36,32 @@ class transaksi extends Controller
 
     public function setuju(Request $request, $id)
     {
-       $pesanan_detail = PesananDetail::findOrFail($id);
-  
-        if ($request->input('harga')) {
-            $pesanan_detail->harga = $pesanan_detail->harga_nego;
-            $pesanan_detail->harga_nego = null;
-            $pesanan_detail->status = 2; // Menandai status disetujui
+        $pesanan_detail = PesananDetail::findOrFail($id);
 
-            // Tambahk an validasi harga_nego sebelum disimpan
-            if (!$pesanan_detail->harga_nego) {
-                return redirect()->back()->with('error', 'Tidak ada tawaran harga yang diajukan.');
-            }
-
-            $pesanan_detail->save();
-
-            return redirect()->back()->with('success', 'Harga berhasil disetujui. Silakan bayar harga yang disetujui.');
-        } else {
-            return redirect()->back()->with('error', 'Tidak ada tawaran harga yang diajukan.');
+        if (!$pesanan_detail->harga_nego) {
+            return redirect()->back()->with('error', 'No price offer was submitted.');
         }
+    
+        $hargaBaru = $request->input('harga');
+        $hargaLama = $pesanan_detail->harga;
+    
+        $negotiationStatus = $request->input('negotiation_status');
+    
+        switch ($negotiationStatus) {
+            case '2': // Negotiation accepted
+                $pesanan_detail->harga = $hargaBaru;
+                $pesanan_detail->harga_nego = null;
+                $pesanan_detail->negotiation_status = 2;
+                break;
+            case '-1': // Negotiation rejected
+                $pesanan_detail->negotiation_status = -1;
+                break;
+            default:
+                return redirect()->back()->with('error', 'Invalid negotiation status.');
+        }
+    
+        $pesanan_detail->save();
+    
+        return redirect()->back()->with('success', 'Negotiation status updated successfully.');
     }
-
 }

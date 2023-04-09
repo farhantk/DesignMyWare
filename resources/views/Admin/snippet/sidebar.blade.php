@@ -59,7 +59,7 @@
             <a href="/admin/transaksi" class="nav-link">
                 <i class="nav-icon far fa-envelope"></i>
                 <p>
-                    Lihat Seluruh Tranksaksi
+                    Permintaan Negosiasi
                 </p>
             </a>
         </ul>
