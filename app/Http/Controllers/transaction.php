@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\order;
 use App\Models\expedition;
 use App\Models\Pesanan;
+use App\Models\PesananDetail;
+use App\Models\product;
 use App\Models\User;
 use Illuminate\Support\Facades\Http;
 
@@ -45,14 +47,23 @@ class transaction extends Controller
         return redirect('user/cart');
     }
     public function index(){
-        $transaction = order::where('id', 1)->first();
-        $api_key = '33aab934c83c7d3f23a5e1f6e055efdc6f6653284770962e8d4711c46f9d2aa0';
-        $receipt_code = $transaction->receipt_code ;
-        $courir = $transaction->courir ;
-        $res = Http::get('https://api.binderbyte.com/v1/track?api_key='.$api_key.'&courier='.$courir.'&awb='.$receipt_code);
-        $track = json_decode($res, true);
+        //$transactions = order::where('user_id', auth()->user()->id)->get();
+        $detailPesanan = PesananDetail::with(['Pesanan'=>function($query){
+            $query->with(['User'=>function($query){
+                $query->where('id', auth()->user()->id);
+            }]);
+        }])->get();
+        //Pesanan::with(['User'=>function($query){
+        //    $query->where('id', auth()->user()->id);
+        //}])->get();
+        dd($detailPesanan);
+        //$api_key = '33aab934c83c7d3f23a5e1f6e055efdc6f6653284770962e8d4711c46f9d2aa0';
+        //$receipt_code = $transaction->receipt_code ;
+        //$courir = $transaction->courir ;
+        //$res = Http::get('https://api.binderbyte.com/v1/track?api_key='.$api_key.'&courier='.$courir.'&awb='.$receipt_code);
+        //$track = json_decode($res, true);
         //dd($track);
-        return view('User.Transaction.index',compact('track'));
+        return view('User.Transaction.index',compact('transactions'));
     }
     /*
     public function detail($orderid){

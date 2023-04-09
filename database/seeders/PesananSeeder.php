@@ -15,7 +15,27 @@ class PesananSeeder extends Seeder
     {
         DB::table('pesanans')->insert([
             'status' => '0',
-            'user_id' => 1
+            'user_id' => 1,
+            'order_id' => 1,
+            'pesanan_detail_id' => 1
+        ]);
+        DB::table('pesanans')->insert([
+            'status' => '0',
+            'user_id' => 1,
+            'order_id' => 1,
+            'pesanan_detail_id' => 2
+        ]);
+        DB::table('pesanans')->insert([
+            'status' => '0',
+            'user_id' => 1,
+            'order_id' => 1,
+            'pesanan_detail_id' => 3
+        ]);
+        DB::table('pesanans')->insert([
+            'status' => '0',
+            'user_id' => 1,
+            'order_id' => 1,
+            'pesanan_detail_id' => 4
         ]);
     }
 }
