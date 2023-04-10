@@ -7,15 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PesananDetail extends Model
 {
-    protected $fillable = [
-        'jumlah_pesanan',
-        'total_harga',
-        'nameset',
-        'nama',
-        'nomor',
-        'product_id',
-        'pesanan_id'
-    ];
+    protected $fillable = ['pesanan_id', 'product_id', 'jumlah', 'harga', 'harga_nego', 'status'];
     // use HasFactory;
     public function pesanan()
     {
@@ -24,6 +16,6 @@ class PesananDetail extends Model
 
     public function product()
     {
-        return $this->belongsTo(product::class,'product_id', 'id');
+        return $this->belongsTo(Product::class,'product_id', 'id');
     }
 }

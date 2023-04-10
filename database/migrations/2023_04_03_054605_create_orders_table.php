@@ -14,13 +14,11 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('product_id');
-            $table->string('status');
-            $table->string('courir');
-            $table->string('receipt_code');
-            $table->integer('total_price');
-            $table->integer('expected_price');
-            $table->integer('paymentreceipt');
+            $table->foreignId('pesanan_id')->nullable();
+            $table->foreignId('courier_id');
+            $table->string('status');// [menunggu konfirmasi, diproses, dikirim, selesai]
+            $table->string('receipt_code')->nullable();
+            $table->string('paymentreceipt')->nullable();
             $table->timestamps();
         });
     }

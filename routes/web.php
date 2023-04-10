@@ -11,6 +11,7 @@ use App\Http\Controllers\transaction;
 use App\Http\Controllers\adminExpedition;
 use App\Http\Controllers\cart;
 use App\Http\Controllers\transaksi;
+use App\Http\Controllers\adminTransaction;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,9 +40,10 @@ Route::get('/user/checkout', [transaction::class, 'view_checkout'])->middleware(
 Route::post('/user/checkout', [transaction::class, 'checkout'])->middleware('auth');
 
 Route::get('/user/transaction', [transaction::class, 'index'])->middleware('auth');
-Route::get('/user/transaction/{orderid}/detail', [transaction::class, 'detail'])->middleware('auth');
-Route::get('/user/transaction/{orderid}/invoice', [transaction::class, 'invoice'])->middleware('auth');
+Route::delete('/user/transaction/{itemId}/remove', [transaction::class, 'remove_item'])->middleware('auth');
 
+// //Keranjang
+Route::get('/user/cart', [Cart::class, 'view_keranjang'])->middleware('auth');
 
 // Admin
 Route::get('/admin/signin', [AdminAuth::class, 'index'])->middleware('guest');
@@ -59,6 +61,12 @@ Route::post('/admin/product/update/{id}', [product::class, 'update'])->middlewar
 
 Route::get('/admin/variant', [variant::class, 'index'])->middleware('admin');
 
+//Transaction
+Route::get('/admin/transaction', [adminTransaction::class, 'index'])->middleware('admin');
+Route::put('/admin/transaction/{orderId}/process', [adminTransaction::class, 'process'])->middleware('admin');
+Route::put('/admin/transaction/{orderId}/deliver', [adminTransaction::class, 'deliver'])->middleware('admin');
+Route::put('/admin/transaction/{orderId}/finish', [adminTransaction::class, 'finish'])->middleware('auth');
+
 //CRUD Expedition
 Route::get('/admin/expedition', [adminExpedition::class, 'index'])->middleware('admin');
 Route::post('/admin/expedition', [adminExpedition::class, 'create']);
@@ -66,11 +74,11 @@ Route::delete('/admin/expedition/{id}/delete', [adminExpedition::class, 'delete'
 Route::put('/admin/expedition/{id}/edit', [adminExpedition::class, 'edit'])->middleware('admin');
 
 
-
-
-// //Keranjang
-Route::get('/user/cart', [Cart::class, 'view_keranjang'])->middleware('auth');
 // Route::get('/admin/')
 Route::get('/admin/transaksi', [transaksi::class, 'view_transaksi'])->middleware('admin');
 //Route::delete('/admin/pesanan-detail/{id}', [transaksi::class, 'destroy'])->name('pesanan-detail.destroy');
-Route::get('/admin/transaksi/{id}/destroy', [transaksi::class, 'destroy'])->middleware('admin');
+Route::patch('/admin/setuju/{id}', [transaksi::class, 'setuju'])->name('admin.setuju')->middleware('admin');
+Route::delete('/admin/hapus/{id}', [transaksi::class, 'destroy'])->name('admin.hapus')->middleware('admin');
+Route::post('/user/pesanan_detail/{id}/negosiasi', [Cart::class, 'negosiasi'])->name('pesanan_detail.negosiasi')->middleware('auth');
+// Route::post('/admin/pesanan_detail/{id}/setuju', [transaksi::class, 'setuju'])->name('pesanan_detail.setuju')->middleware('admin');
+

@@ -12,7 +12,6 @@ class userDashboard extends Controller
     }
 
     public function edit(Request $request){
-
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'photo' => 'file|image|mimes:jpeg,png,jpg|max:2048',

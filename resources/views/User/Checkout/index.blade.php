@@ -20,17 +20,74 @@
         <h1 class="py-10 text-4xl font-bold">
             Selesaikan transaksimu
         </h1>
-        <div class="grid grid-cols-3 gap-4">
+        <div class="pb-10">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Produk
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Qty
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Harga
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Aksi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($details_pesanan as $detail)
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4 font-semibold text-gray-900">
+                                    {{$detail->product->name}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{$detail->jumlah_pesanan}}
+                                </td>
+                                <td class="px-6 py-4 font-semibold text-gray-900">
+                                    Rp. {{$detail->product->price * $detail->jumlah_pesanan}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <form action="/user/transaction/{{$detail->id}}/remove" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a class="font-medium text-red-600 hover:underline"><button type="submit">Hapus</button></a>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                    <tfoot class="text-xs text-gray-700 uppercase bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Rp. {{$totalPrice}}
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="">
             <div class="col-span-2 border border-gray-200 rounded-lg shadow p-10">           
-                <form action="user/checkout" method="post">
+                <form action="/user/checkout" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-6">
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama lengkap</label>
-                        <input type="text" id="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" required readonly value="{{$user->name}}">
+                        <input type="text" id="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" required value="{{$user->name}}">
                     </div>
                     <div class="mb-6">
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No HP</label>
-                        <input type="text" id="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" required readonly value="{{$user->phone_number}}">
+                        <input type="text" id="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" required value="{{$user->phone_number}}">
                     </div>
 
                     <div class="border-b border-gray-900/10 ">
@@ -80,138 +137,37 @@
                       </div>
                     <div class="mb-6 mt-6">
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Total harga</label>
-                        <input type="text" id="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" required readonly value="{{$user->name}}">
+                        <input type="text" id="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" required readonly value="{{$totalPrice}}">
                     </div>
                     <div class="mb-6 mt-6">
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Pilih ekspedisi pengiriman</label>
-                        <select id="countries" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6">
-                            <option selected>Pengiriman</option>
+                        <select id="countries" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" name="courier">
+                            
                             @foreach ($expeditions as $expedition)
-                                <option value="{{$expedition->name}}">{{$expedition->name}}</option>
+                                <option value="{{$expedition->id}}">{{$expedition->name}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="mb-6 mt-6">
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Bukti pembayaran</label>
-                        <input class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6" id="default_size" type="file" name="paymentreceipt">
-                    </div>
-                    <button class="text-base text-white bg-third rounded-lg font-semibold py-1.5 px-8 hover:opacity-80 hover:shadow-lg transition duration-500">Selesai</button>
+                        <input class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-third sm:text-sm sm:leading-6 @error('photo') disabled @enderror" id="default_size" type="file" name="paymentreceipt">
+                        @error('paymentreceipt')
+                            <div class="invalid-feedback">
+                            {{$message}}
+                            </div>  
+                        @enderror
+                        </div>
+                        <h1>Jumlah yang harus dibayar sebesar Rp. {{$totalPrice}}</h1>
+                        <p>BCA a.n DesignMyWare 342352352</p>
+                        <p>BNI a.n DesignMyWare 534535345</p>
+                        <p>BSI a.n DesignMyWare 424242455</p>
+                        <p>Mandiri a.n DesignMyWare 32424672</p>
+
+
+                    <button class="mt-5 text-base text-white bg-third rounded-lg font-semibold py-1.5 px-8 hover:opacity-80 hover:shadow-lg transition duration-500">Selesai</button>
                 </form>
             </div>
-            <div class="">
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left text-gray-500">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    <span class="sr-only">Image</span>
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Product
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Qty
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Price
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Action
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white border-b">
-                                <td class="w-32 p-4">
-                                    <img src="/docs/images/products/apple-watch.png" alt="Apple Watch">
-                                </td>
-                                <td class="px-6 py-4 font-semibold text-gray-900">
-                                    Apple Watch
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center space-x-3">
-                                        <button class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button">
-                                            <span class="sr-only">Quantity button</span>
-                                            <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                                        </button>
-                                        <div>
-                                            <input type="number" id="first_product" class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700" placeholder="1" required>
-                                        </div>
-                                        <button class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button">
-                                            <span class="sr-only">Quantity button</span>
-                                            <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                                        </button>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 font-semibold text-gray-900">
-                                    $599
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="#" class="font-medium text-red-600hover:underline">Remove</a>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b">
-                                <td class="w-32 p-4">
-                                    <img src="/docs/images/products/imac.png" alt="Apple Imac">
-                                </td>
-                                <td class="px-6 py-4 font-semibold text-gray-900">
-                                    Imac 27"
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center space-x-3">
-                                        <button class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button">
-                                            <span class="sr-only">Quantity button</span>
-                                            <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                                        </button>
-                                        <div>
-                                            <input type="number" id="second_product" class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1" placeholder="1" required>
-                                        </div>
-                                        <button class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button">
-                                            <span class="sr-only">Quantity button</span>
-                                            <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                                        </button>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 font-semibold text-gray-900">
-                                    $2499
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="#" class="font-medium text-red-600 hover:underline">Remove</a>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b hover:bg-gray-50">
-                                <td class="w-32 p-4">
-                                    <img src="/docs/images/products/iphone-12.png" alt="Iphone 12">
-                                </td>
-                                <td class="px-6 py-4 font-semibold text-gray-900">
-                                    Iphone 12 
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center space-x-3">
-                                        <button class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button">
-                                            <span class="sr-only">Quantity button</span>
-                                            <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                                        </button>
-                                        <div>
-                                            <input type="number" id="third_product" class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1" placeholder="1" required>
-                                        </div>
-                                        <button class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button">
-                                            <span class="sr-only">Quantity button</span>
-                                            <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                                        </button>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 font-semibold text-gray-900">
-                                    $999
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="#" class="font-medium text-red-600 hover:underline">Remove</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            
           </div>
     </section>    
 

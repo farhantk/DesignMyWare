@@ -18,22 +18,6 @@
                 DesingMyWare   
             </a>
             <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
-                @if(session()->has('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>{{session('success')}}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
-                @if(session()->has('danger'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>{{session('danger')}}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                         Admin

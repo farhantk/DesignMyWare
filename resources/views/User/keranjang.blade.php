@@ -49,12 +49,19 @@
                             Total Harga
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Status
+                            Negosiasi
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Status Nego
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Harga Akhir
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $no = 1 ?>
+                    <?php $total_harga = 0 ?>
                     @forelse ($pesanan_details as $pesanan_id => $pesanan_details_per_id)
                         @foreach ($pesanan_details_per_id as $pesanan_detail)
                             <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
@@ -74,36 +81,39 @@
                                     {{ $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <label class="label label-success">
-                                        @switch($pesanan_detail->status)
-                                            @case(1)
-                                                Negosiasi
-                                                @break
-                                            @case(2)
-                                                Dikemas
-                                                @break
-                                            @case(3)
-                                                Dikirim
-                                                @break
-                                            @case(4)
-                                                Diterima
-                                                @break
-                                            @case(5)
-                                                Selesai
-                                                @break
-                                            @default
-                                                Status tidak ditemukan
-                                        @endswitch
-                                    </label>
+                                    <form action="{{ route('pesanan_detail.negosiasi', $pesanan_detail->id) }}" method="POST">
+                                      @csrf
+                                      <input type="number" name="harga" value="{{ $pesanan_detail->harga }}" />
+                                      <button type="submit">Kirim</button>
+                                    </form>
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $pesanan_detail->status_nego }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $pesanan_detail->harga_nego ?? $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}
                                 </td>
                             </tr>
+                            <?php $total_harga += $pesanan_detail->harga_nego?>
                         @endforeach
                     @empty
                         <tr>
                             <td colspan="6">Data Kosong</td>
                         </tr>
                     @endforelse
-                    
+                    <tr>
+                        <td colspan="6" align="right"><strong>Total Harga : </strong></td>
+                        <td>Rp.{{number_format($total_harga)}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"></td>
+                        <td colspan="2">
+                            <a href="#" class="btn btn-success btn-blok">
+                                <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Checkout</button>
+                            </a>
+                        </td>
+                    </tr>
+
                 </tbody>
             </table>
         </div>

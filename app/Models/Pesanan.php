@@ -8,17 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Pesanan extends Model
 {
     protected $fillable = [
-        'kode_pesanan',
-        'status',
-        'user_id'
+        'user_id',
+        'order_id',
+        'total_price',
     ];
     public function pesanan_details()
     {
-        return $this->hasMany(PesananDetail::class,'pesanan_id', 'id');
+        return $this->hasMany(PesananDetail::class);
     }
-
     public function user()
     {
-        return $this->belongsTo(User::class,'id','user_id');
+        return $this->belongsTo(User::class);
+    }
+    public function order()
+    {
+        return $this->belongsTo(order::class);
     }
 }

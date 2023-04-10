@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pesanan_id')->nullable();
             $table->boolean('isAdmin')->default(false);
             $table->string('name');
             $table->string('photo')->nullable();

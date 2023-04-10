@@ -11,21 +11,19 @@ class order extends Model
 
     protected $fillable = [
         'user_id',
-        'product_id',
+        'pesanan_id',
         'status',
-        'courir',
+        'courier_id',
         'receipt_code',
-        'total_price',
-        'expected_price',
         'paymentreceipt'
     ];
-    public function product(){
-        return $this->hasMany(product::class);
-    }
     public function User(){
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
-    public function expedition(){
+    public function courier(){
         return $this->belongsTo(expedition::class);
+    }
+    public function pesanan(){
+        return $this->belongsTo(Pesanan::class);
     }
 }

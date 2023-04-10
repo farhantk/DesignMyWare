@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('pesanans', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_pesanan');
-            $table->string('status')->default(0);
-            $table->integer('user_id');
+            $table->foreignId('user_id')->nullable();
+            $table->foreignId('pesanan_detail_id')->nullable();
+            $table->foreignId('order_id')->nullable();
+            $table->string('status')->default(0);//0 = masih nego, 1=selesai nego
+            $table->integer('total_price')->default(0);
             $table->timestamps();
         });
     }

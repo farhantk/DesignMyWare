@@ -13,9 +13,8 @@ class transaksi extends Controller
 
     public function destroy($id)
     {
-        pesanandetail::where('pesanan_id',$id)->delete();
-        pesanan::where('id',$id);
-        return redirect('/admin/transaksi');
+        PesananDetail::findOrFail($id)->delete();
+        return redirect()->back()->with('success', 'Pesanan detail berhasil dihapus.');
     }
 
     public function view_transaksi(){
@@ -34,4 +33,31 @@ class transaksi extends Controller
         ]);
     }
 
+    public function setuju(Request $request, $id)
+    {
+        $pesanan_detail = PesananDetail::findOrFail($id);
+
+        $negotiationStatus = $request->input('negotiation_status');
+
+        switch ($negotiationStatus) {
+            case '1': // Negotiation accepted
+                $pesanan_detail->harga_nego = $pesanan_detail->harga;
+                $pesanan_detail->harga = 0;
+                $pesanan_detail->status_nego = 'Accept';
+                break;
+            case '0': // Negotiation rejected
+                $pesanan_detail->harga_nego = $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price;
+                $pesanan_detail->harga = 0;
+                $pesanan_detail->status_nego = 'Reject';
+                break;
+            default:
+                return redirect()->back()->with('error', 'Invalid negotiation status.');
+        }
+
+        $pesanan_detail->save();
+
+        return redirect()->back()->with('success', 'Negotiation status updated successfully.');
+    }
+
+    
 }

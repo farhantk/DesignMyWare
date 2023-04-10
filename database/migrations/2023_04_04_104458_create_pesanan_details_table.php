@@ -15,15 +15,15 @@ return new class extends Migration
             $table->id();
             $table->integer('jumlah_pesanan');
             $table->integer('total_harga');
-            $table->boolean('nameset')->default(false);
-            $table->string('nama')->nullable();
-            $table->string('nomor')->nullable();
-            $table->integer('product_id');
-            $table->integer('pesanan_id');
+            $table->foreignId('product_id');
+            $table->foreignId('pesanan_id');
+            $table->foreignId('status')->default(0);
+            $table->string('status_nego')->default("-");
+            $table->integer('harga_nego')->default(0);
+            $table->integer('harga')->default(0);
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

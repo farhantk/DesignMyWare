@@ -14,7 +14,8 @@ use App\Models\Pesanan;
 class UserAuth extends Controller
 {
     public function view(){
-        return view('User.landing_page');
+        $products = product::all();
+        return view('User.landing_page', compact('products'));
     }
     public function view_SignIn(){
         return view('User.signin');
