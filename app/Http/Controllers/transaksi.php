@@ -50,6 +50,7 @@ class transaksi extends Controller
                 $pesanan_detail->harga_nego = $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price;
                 $pesanan_detail->harga = 0;
                 $pesanan_detail->status_nego = 'Reject';
+                $pesanan_detail->total_harga = $pesanan_detail->harga_nego;
                 break;
             default:
                 return redirect()->back()->with('error', 'Invalid negotiation status.');
