@@ -71,17 +71,29 @@ class UserAuth extends Controller
 
     public function order(Request $req, $id){
         $product = product::find($id);
+        if(!Auth::user()->pesanan){
+            Pesanan::create([
+                "user_id" => Auth::user()->id,
+                "total_price" => $req->totalPrice,
+                "status" => "0"
+            ]);
+            
+        }
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->first();
+        /*
         $pesanan = Pesanan::create([
             "user_id" => Auth::user()->id,
             "total_price" => $req->totalPrice,
             "status" => "0"
         ]);
+        */
         PesananDetail::create([
             "jumlah_pesanan" => $req->qty,
             "total_harga" => $req->totalPrice,
             "product_id" => $product->id,
             "pesanan_id" => $pesanan->id,
         ]);
+        
         return redirect('/');
     }
 }
