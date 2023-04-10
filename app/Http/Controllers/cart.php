@@ -51,4 +51,11 @@ class Cart extends Controller
 
     }
 
+    public function delete($id)
+    {
+        $pesanan_detail = PesananDetail::find($id);
+        $pesanan_detail->delete();
+        return redirect()->back()->with('success', 'Pesanan berhasil dihapus.');
+    }
+
 }

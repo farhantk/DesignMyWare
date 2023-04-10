@@ -34,28 +34,31 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            No
+                            <center>No</center>
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Nama Barang
+                            <center>Nama Barang</center>
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Jumlah
+                            <center>Jumlah</center>
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Harga
+                            <center>Harga</center>
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Total Harga
+                            <center>Total Harga</center>
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Negosiasi
+                            <center>Negosiasi</center>
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Status Nego
+                            <center>Status Nego</center>
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Harga Akhir
+                            <center>Harga Akhir</center>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <center>Hapus</center>
                         </th>
                     </tr>
                 </thead>
@@ -66,19 +69,19 @@
                         @foreach ($pesanan_details_per_id as $pesanan_detail)
                             <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{$no++}}
+                                    <center>{{$no++}}</center>
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ $pesanan_detail->product->name}}
+                                    <center>{{ $pesanan_detail->product->name}}</center>
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $pesanan_detail->jumlah_pesanan}}
+                                    <center>{{ $pesanan_detail->jumlah_pesanan}}</center>
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $pesanan_detail->product->price}}
+                                    <center>{{ $pesanan_detail->product->price}}</center>
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}
+                                    <center>{{ $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}</center>
                                 </td>
                                 <td class="px-6 py-4">
                                     <form action="{{ route('pesanan_detail.negosiasi', $pesanan_detail->id) }}" method="POST">
@@ -88,14 +91,21 @@
                                     </form>
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $pesanan_detail->status_nego }}
+                                    <center>{{ $pesanan_detail->status_nego }}</center>
                                 </td>
                                 <td class="px-6 py-4">
                                     @if($pesanan_detail->status_nego == 'Negosiasi' || $pesanan_detail->status_nego == 'Accept' || $pesanan_detail->status_nego == 'Reject')
-                                        {{ $pesanan_detail->harga_nego }}
+                                        <center>{{ $pesanan_detail->harga_nego }}</center>
                                     @else
-                                        {{ $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}
+                                        <center>{{ $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}</center>
                                     @endif
+                                </td>
+                                <td>
+                                    <form action="{{ route('pesanan_detail.delete', $pesanan_detail->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <center><button type="submit" class="text-red-600 hover:text-red-800">Delete</button></center>
+                                    </form>
                                 </td>
                             </tr>
                             <?php $total_harga += $pesanan_detail->harga_nego?>
