@@ -27,6 +27,7 @@
                 </div>
             </div>
             <div class="w-full px-4 mb-12 md:w-1/3">
+                <!--
                 <h3 class="font-semibold text-xl text-white mb-5">Kategori Tulisan</h3>
                 <ul class="text-white">
                     <li>
@@ -39,8 +40,10 @@
                         <a href="#" class="inline-block text-white hover:text-primary mb-3">Food</a>
                     </li>
                 </ul>
+                -->
             </div>
             <div class="w-full px-4 mb-12 md:w-1/3">
+                <!--
                 <h3 class="font-semibold text-xl text-white mb-5">Tautan</h3>
                 <ul class="text-slate-300">
                     <li>
@@ -59,6 +62,7 @@
                         <a href="#contact" class="inline-block text-base hover:text-primary mb-3">Contact</a>
                     </li>
                 </ul>
+                -->
             </div>
         </div>
         <div class="w-full pt-5 border-t border-white">

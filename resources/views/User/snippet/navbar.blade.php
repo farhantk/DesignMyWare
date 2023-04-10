@@ -5,6 +5,7 @@
           <div class="px-4">
               <a href="/" class="text-third block py-6 font-bold text-lg">Design My Ware</a>
           </div>
+          <!--
           <div class="flex items-center justify-center px-4">
               <button id="hamburger" name="hamburger" class="absolute block right-4 lg:hidden">
                   <span class="hamburger-item transition duratiaon-300 ease-in-out origin-top-left"></span>
@@ -32,6 +33,7 @@
               </nav>
             </div>
           </div>
+          -->
           </div>
         </div>
       </div>
