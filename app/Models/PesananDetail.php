@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PesananDetail extends Model
 {
-    protected $fillable = ['pesanan_id', 'product_id', 'jumlah', 'harga', 'harga_nego', 'status'];
+    protected $fillable = ['pesanan_id', 'product_id', 'jumlah_pesanan', 'harga', 'harga_nego', 'status', 'total_harga'];
     // use HasFactory;
     public function pesanan()
     {

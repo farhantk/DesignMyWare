@@ -72,9 +72,9 @@ class UserAuth extends Controller
     public function order(Request $req, $id){
         $product = product::find($id);
         $pesanan = Pesanan::create([
-            "kode_pesanan" => "MDW000001",
-            "status" => "Pending",
             "user_id" => Auth::user()->id,
+            "total_price" => $req->totalPrice,
+            "status" => "0"
         ]);
         PesananDetail::create([
             "jumlah_pesanan" => $req->qty,
