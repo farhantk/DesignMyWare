@@ -13,9 +13,6 @@ class PesananSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('pesanans')->insert([
-            'status' => '0',
-            'user_id' => 1,
-        ]);
+
     }
 }

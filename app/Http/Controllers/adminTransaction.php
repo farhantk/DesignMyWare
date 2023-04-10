@@ -8,7 +8,7 @@ use App\Models\order;
 class adminTransaction extends Controller
 {
     public function index(){
-        $orders = order::all();
+        $orders = order::orderBy('created_at', 'desc')->get();
         return view('Admin.transaction.index', compact('orders'));
     }
     public function process($orderId){

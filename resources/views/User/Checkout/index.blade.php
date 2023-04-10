@@ -49,7 +49,7 @@
                                     {{$detail->jumlah_pesanan}}
                                 </td>
                                 <td class="px-6 py-4 font-semibold text-gray-900">
-                                    Rp. {{$detail->product->price * $detail->jumlah_pesanan}}
+                                    Rp. {{$detail->total_harga}}
                                 </td>
                                 <td class="px-6 py-4">
                                     <form action="/user/transaction/{{$detail->id}}/remove" method="POST">

@@ -13,33 +13,7 @@ class DetailPesananSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('pesanan_details')->insert([
-            'pesanan_id' => 1,
-        	'jumlah_pesanan' => 2,
-            'total_harga' => 200000,
-            'product_id' => 1,
-        ]);
 
-        DB::table('pesanan_details')->insert([
-            'pesanan_id' => 1,
-        	'jumlah_pesanan' => 2,
-            'total_harga' => 200000,
-            'product_id' => 3,
-        ]);
-
-        DB::table('pesanan_details')->insert([
-            'pesanan_id' => 1,
-        	'jumlah_pesanan' => 5,
-            'total_harga' => 200000,
-            'product_id' => 5,
-        ]);
-
-        DB::table('pesanan_details')->insert([
-            'pesanan_id' => 1,
-        	'jumlah_pesanan' => 10,
-            'total_harga' => 200000,
-            'product_id' => 3,
-        ]);
 
     }
 }

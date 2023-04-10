@@ -21,8 +21,7 @@ class transaction extends Controller
         $totalPrice = 0;
         $price = 0;
         foreach($details_pesanan as $detail){
-            $price = $detail->product->price * $detail->jumlah_pesanan;
-            $totalPrice = $totalPrice + $price;
+            $totalPrice = $totalPrice + $detail->total_harga;
         }
         return view('User.Checkout.index', compact('expeditions', 'user', 'details_pesanan', 'totalPrice'));
     }
@@ -64,10 +63,7 @@ class transaction extends Controller
                     'order_id' =>  $newOrder->id,
                     'total_price'=>$totalPrice
                 ]);
-        // membuat relasi pesanan baru dengan user
-        $pesanan = Pesanan::create([
-            'user_id'=>auth()->user()->id,
-        ]);
+
         $validatedData['pesanan_id'] = $pesanan->id;
         User::where('id',auth()->user()->id)
             ->update([
