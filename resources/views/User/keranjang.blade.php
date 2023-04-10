@@ -97,7 +97,7 @@
                                     @if($pesanan_detail->status_nego == 'Negosiasi' || $pesanan_detail->status_nego == 'Accept' || $pesanan_detail->status_nego == 'Reject')
                                         <center>{{ $pesanan_detail->harga_nego }}</center>
                                     @else
-                                        <center>{{ $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}</center>
+                                        <center>{{ $pesanan_detail->harga_nego = $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}</center>
                                     @endif
                                 </td>
                                 <td>
