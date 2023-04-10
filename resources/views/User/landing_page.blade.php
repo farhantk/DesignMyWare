@@ -95,7 +95,7 @@
                             <div class="flex items-center justify-between py-2">
                                 <span class="text-3xl font-bold text-gray-900">Rp. {{$product->price}}</span>
                             </div>
-                            <a href="#product_overview">
+                            <a href="{{route('user.product', $product->id)}}">
                                 <button class="text-base text-white bg-third rounded-lg font-semibold py-1 px-2 hover:opacity-80 hover:shadow-lg transition duration-500">Custom sekarang</button>
                             </a>
                         </div>
