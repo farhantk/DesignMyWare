@@ -5,7 +5,7 @@ use App\Http\Controllers\AdminAuth;
 use App\Http\Controllers\UserAuth;
 use App\Http\Controllers\adminDashboard;
 use App\Http\Controllers\userDashboard;
-use App\Http\Controllers\product;
+use App\Http\Controllers\ProductController as product;
 use App\Http\Controllers\variant;
 use App\Http\Controllers\transaction;
 use App\Http\Controllers\adminExpedition;
@@ -25,6 +25,8 @@ use App\Http\Controllers\adminTransaction;
 */
 //user auth
 Route::get('/', [UserAuth::class, 'view']);
+Route::get('/product/{id}', [UserAuth::class, 'product'])->name('user.product');
+Route::post('/order/{id}', [UserAuth::class, "order"])->middleware('auth')->name('user.order');
 Route::get('/signin', [UserAuth::class, 'view_SignIn'])->middleware('guest')->name('login');
 Route::post('/signin', [UserAuth::class, 'SignIn']);
 Route::get('/signup', [UserAuth::class, 'view_SignUp'])->middleware('guest');
@@ -50,7 +52,13 @@ Route::post('/admin/signout', [AdminAuth::class, 'adminSignOut']);
 
 Route::get('/admin', [adminDashboard::class, 'index'])->middleware('admin');
 
-Route::get('/admin/product', [product::class, 'index'])->middleware('admin');
+Route::get('/admin/product', [product::class, 'index'])->middleware('admin')->name('admin.product');
+Route::post('/admin/product', [product::class, 'create'])->middleware('admin')->name('admin.product.create');
+Route::get('/admin/product/add', [product::class, 'add'])->middleware('admin')->name('admin.product.add');
+Route::get('/admin/product/edit/{id}', [product::class, 'edit'])->middleware('admin')->name('admin.product.edit');
+Route::get('/admin/product/delete/{id}', [product::class, 'delete'])->middleware('admin')->name('admin.product.delete');
+Route::post('/admin/product/update/{id}', [product::class, 'update'])->middleware('admin')->name('admin.product.update');
+
 Route::get('/admin/variant', [variant::class, 'index'])->middleware('admin');
 
 //Transaction
