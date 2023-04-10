@@ -91,7 +91,11 @@
                                     {{ $pesanan_detail->status_nego }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $pesanan_detail->harga_nego ?? $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}
+                                    @if($pesanan_detail->status_nego == 'Negosiasi' || $pesanan_detail->status_nego == 'Accept' || $pesanan_detail->status_nego == 'Reject')
+                                        {{ $pesanan_detail->harga_nego }}
+                                    @else
+                                        {{ $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price}}
+                                    @endif
                                 </td>
                             </tr>
                             <?php $total_harga += $pesanan_detail->harga_nego?>
