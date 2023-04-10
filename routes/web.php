@@ -73,4 +73,4 @@ Route::patch('/admin/setuju/{id}', [transaksi::class, 'setuju'])->name('admin.se
 Route::delete('/admin/hapus/{id}', [transaksi::class, 'destroy'])->name('admin.hapus')->middleware('admin');
 Route::post('/user/pesanan_detail/{id}/negosiasi', [Cart::class, 'negosiasi'])->name('pesanan_detail.negosiasi')->middleware('auth');
 // Route::post('/admin/pesanan_detail/{id}/setuju', [transaksi::class, 'setuju'])->name('pesanan_detail.setuju')->middleware('admin');
-
+Route::delete('/user/pesanan_detail/{id}/delete', [Cart::class, 'delete'])->name('pesanan_detail.delete')->middleware('auth');
