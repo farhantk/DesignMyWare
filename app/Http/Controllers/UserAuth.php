@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\product;
+use App\Models\PesananDetail;
+use App\Models\Pesanan;
+
 
 class UserAuth extends Controller
 {
@@ -57,5 +61,26 @@ class UserAuth extends Controller
         $request->session()->regenerateToken();
     
         return redirect('/signin');
+    }
+
+    public function product(Request $req,$id){
+        $product = product::find($id);
+        return view('User.detail_produk', ["product" => $product]);
+    }
+
+    public function order(Request $req, $id){
+        $product = product::find($id);
+        $pesanan = Pesanan::create([
+            "kode_pesanan" => "MDW000001",
+            "status" => "Pending",
+            "user_id" => Auth::user()->id,
+        ]);
+        PesananDetail::create([
+            "jumlah_pesanan" => $req->qty,
+            "total_harga" => $req->totalPrice,
+            "product_id" => $product->id,
+            "pesanan_id" => $pesanan->id,
+        ]);
+        return redirect('/');
     }
 }

@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pesanan extends Model
 {
+    protected $fillable = [
+        'kode_pesanan',
+        'status',
+        'user_id'
+    ];
     public function pesanan_details()
     {
         return $this->hasMany(PesananDetail::class,'pesanan_id', 'id');
