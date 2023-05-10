@@ -41,7 +41,7 @@
                             </div>
                             <div class="border-l-2 ps-10 border-gray-300">
                                 <h5 class="mt-10 text-base font-bold tracking-tight text-gray-700">Total belanja</h5>
-                                <h5 class="text-2xl font-bold tracking-tight text-gray-900">Rp. {{$order->pesanan->total_price}}</h5>
+                                <h5 class="text-2xl font-bold tracking-tight text-gray-900">Rp. {{$totalPrice}}</h5>
 
                                 <h5 class="mt-4 text-base font-bold tracking-tight text-gray-700">Kurir : {{$order->courier->name}}</h5>
                                 @if($order->status == 'Dikirim' || $order->status == 'Selesai')
