@@ -25,6 +25,14 @@
             with font-awesome or any other icon font library -->
         <li class="nav-header"><b>Produk</b></li>
         <li class="nav-item">
+            <a href="/admin/expedition" class="nav-link">
+                <i class="nav-icon far fa-envelope"></i>
+                <p>
+                    Ekspedisi
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="/admin/product" class="nav-link">
                 <i class="nav-icon far fa-envelope"></i>
                 <p>
@@ -44,6 +52,23 @@
             <a href="#" class="nav-link">
             <i class="nav-icon far fa-circle text-info"></i>
             <p>Informational</p>
+            </a>
+        </li>
+        <li class="nav-header"><b>Transaksi</b></li>
+        <li class="nav-item">
+            <a href="/admin/transaction" class="nav-link">
+                <i class="nav-icon far fa-envelope"></i>
+                <p>
+                    Semua Transaksi
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/admin/transaksi" class="nav-link">
+                <i class="nav-icon far fa-envelope"></i>
+                <p>
+                    Permintaan Negosiasi
+                </p>
             </a>
         </li>
         </ul>

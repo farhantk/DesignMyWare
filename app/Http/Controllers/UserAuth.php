@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\product;
+use App\Models\PesananDetail;
+use App\Models\Pesanan;
+
 
 class UserAuth extends Controller
 {
     public function view(){
-        return view('User.landing_page');
+        $products = product::all();
+        return view('User.landing_page', compact('products'));
     }
     public function view_SignIn(){
         return view('User.signin');
@@ -25,8 +30,8 @@ class UserAuth extends Controller
         ]);
         $user = User::where('email', $credentials['email'])->first();
 
-        if (!$user) {
-            $request->session()->flash('danger', 'emal tdak terdaftar');
+        if (!$user || $user->isAdmin) {
+            $request->session()->flash('danger', 'Email tdak terdaftar');
             return redirect('/signin');
         }
         if (!Hash::check($credentials['password'], $user->password)) {
@@ -57,5 +62,38 @@ class UserAuth extends Controller
         $request->session()->regenerateToken();
     
         return redirect('/signin');
+    }
+
+    public function product(Request $req,$id){
+        $product = product::find($id);
+        return view('User.detail_produk', ["product" => $product]);
+    }
+
+    public function order(Request $req, $id){
+        $product = product::find($id);
+        if(!Auth::user()->pesanan){
+            Pesanan::create([
+                "user_id" => Auth::user()->id,
+                "total_price" => $req->totalPrice,
+                "status" => "0"
+            ]);
+            
+        }
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->first();
+        /*
+        $pesanan = Pesanan::create([
+            "user_id" => Auth::user()->id,
+            "total_price" => $req->totalPrice,
+            "status" => "0"
+        ]);
+        */
+        PesananDetail::create([
+            "jumlah_pesanan" => $req->qty,
+            "total_harga" => $req->totalPrice,
+            "product_id" => $product->id,
+            "pesanan_id" => $pesanan->id,
+        ]);
+        
+        return redirect('/');
     }
 }

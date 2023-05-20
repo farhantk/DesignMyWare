@@ -2,7 +2,14 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Data Produk</h3>
+          <div class="row align-items-center">
+            <div class="col-10">
+              <h3 class="card-title w-100">Data Produk</h3>
+            </div>
+            <div class="col-2">
+              <a class="btn btn-primary float-right" href="{{route('admin.product.add')}}">Tambah Produk</a>
+            </div>
+          </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive p-0">
@@ -11,40 +18,24 @@
               <tr>
                 <th>ID</th>
                 <th>Nama</th>
+                <th>Varian ID</th>
                 <th>Deskripsi</th>
                 <th>Harga</th>
-                <th>Lainnya</th>
+                <th>Aksi</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>183</td>
-                <td>John Doe</td>
-                <td>11-7-2014</td>
-                <td><span class="tag tag-success">Approved</span></td>
-                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-              </tr>
-              <tr>
-                <td>219</td>
-                <td>Alexander Pierce</td>
-                <td>11-7-2014</td>
-                <td><span class="tag tag-warning">Pending</span></td>
-                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-              </tr>
-              <tr>
-                <td>657</td>
-                <td>Bob Doe</td>
-                <td>11-7-2014</td>
-                <td><span class="tag tag-primary">Approved</span></td>
-                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-              </tr>
-              <tr>
-                <td>175</td>
-                <td>Mike Doe</td>
-                <td>11-7-2014</td>
-                <td><span class="tag tag-danger">Denied</span></td>
-                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-              </tr>
+              @foreach($products as $p)
+                <tr>
+                  <td>{{$p->id}}</td>
+                  <td>{{$p->name}}</td>
+                  <td>{{$p->variant_id}}</td>
+                  <td>{{$p->desc}}</td>
+                  <td>{{$p->price}}</td>
+                  <td class="pr-0"><a href="{{route('admin.product.edit', $p->id)}}" class="btn btn-primary">Edit</a></td>
+                  <td class="pl-0"><a href="{{route('admin.product.delete', $p->id)}}" class="btn btn-danger">Delete</a></td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
