@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\order;
 use App\Models\expedition;
+use App\Models\order;
 use App\Models\Pesanan;
 use App\Models\PesananDetail;
 use App\Models\product;
