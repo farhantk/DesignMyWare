@@ -6,6 +6,8 @@ use App\Http\Controllers\Api\ApiUserAuth;
 use App\Http\Controllers\Api\ApiUserProfile;
 use App\Http\Controllers\Api\ApiCheckout;
 use App\Http\Controllers\Api\ApiTransaction;
+use App\Http\Controllers\Api\CartApiController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,7 +32,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/user/cart', [CartApiController::class, 'getCart'])-> middleware('auth:sanctum');
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user/cart', [CartApiController::class, 'getCart']);
-});
+// Route::middleware('auth:sanctum')->group(function () {
+//     Route::get('/user/cart', [CartApiController::class, 'getCart']);
+// });

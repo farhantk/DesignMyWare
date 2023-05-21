@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Models\Pesanan;
 use App\Models\PesananDetail;
@@ -27,6 +30,6 @@ class CartApiController extends Controller
             'pesanan_details' => $pesananDetails
         ];
 
-        return response()->json($responseData, 200);
+        return response()->json([$responseData, 200]);
     }
 }
