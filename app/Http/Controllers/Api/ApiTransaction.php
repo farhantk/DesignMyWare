@@ -40,5 +40,19 @@ class ApiTransaction extends Controller
         
         return response()->json($response);
     }
+    public function finish(Request $request)
+    {
+        $order = Order::where('id', $request->input('orderId'))
+            ->where('user_id', auth()->user()->id)
+            ->first();
 
+        if (!$order) {
+            return response()->json(['message' => 'Order not found'], 404);
+        }
+
+        $order->status = 'Selesai';
+        $order->save();
+
+        return response()->json(['message' => 'Order successfully finished'], 200);
+    }
 }

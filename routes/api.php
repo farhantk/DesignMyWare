@@ -23,6 +23,7 @@ Route::post('signout', [ApiUserAuth::class, 'signOut'])->middleware('auth:sanctu
 Route::put('user/checkout', [ApiCheckout::class, 'checkout'])->middleware('auth:sanctum');
 Route::get('user/transaction', [ApiTransaction::class, 'transaction'])->middleware('auth:sanctum');
 Route::post('user/transaction/track', [ApiTransaction::class, 'track'])->middleware('auth:sanctum');
+Route::post('user/transaction/finish', [ApiTransaction::class, 'finish'])->middleware('auth:sanctum');
 Route::put('user/editprofile', [ApiUserProfile::class, 'updateProfile'])->middleware('auth:sanctum');
 Route::get('user', [ApiUserProfile::class, 'getProfile'])->middleware('auth:sanctum');
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
