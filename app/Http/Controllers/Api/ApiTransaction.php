@@ -33,7 +33,7 @@ class ApiTransaction extends Controller
     public function track(Request $request){
         $courier = $request->input('courier');
         $receipt = $request->input('receipt_code');
-        $api_key = '2dc5a1730c246c81eeca83daef396b1d7c2b2ac25676ad5a6a5f53f66e32063d';
+        $api_key = 'a11171a46d958fc2f492134e8f73e639ad9d75068fc13c39ea2f9874b5dc420f';
         $url = 'https://api.binderbyte.com/v1/track?api_key='.$api_key.'&courier='.$courier.'&awb='.$receipt;
         $data = file_get_contents($url);
         $response = json_decode($data, true);
