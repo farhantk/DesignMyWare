@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ApiUserAuth;
 use App\Http\Controllers\Api\ApiUserProfile;
 use App\Http\Controllers\Api\ApiCheckout;
 use App\Http\Controllers\Api\ApiTransaction;
+use App\Http\Controllers\Api\ApiExpedition;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,6 +27,7 @@ Route::post('user/transaction/track', [ApiTransaction::class, 'track'])->middlew
 Route::post('user/transaction/finish', [ApiTransaction::class, 'finish'])->middleware('auth:sanctum');
 Route::put('user/editprofile', [ApiUserProfile::class, 'updateProfile'])->middleware('auth:sanctum');
 Route::get('user', [ApiUserProfile::class, 'getProfile'])->middleware('auth:sanctum');
+Route::get('expedition', [ApiExpedition::class, 'index']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
