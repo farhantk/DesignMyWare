@@ -32,7 +32,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/user/cart', [CartApiController::class, 'getCart'])-> middleware('auth:sanctum');
+Route::get('user/cart', [CartApiController::class, 'getCart'])-> middleware('auth:sanctum');
 
 // Route::middleware('auth:sanctum')->group(function () {
 //     Route::get('/user/cart', [CartApiController::class, 'getCart']);

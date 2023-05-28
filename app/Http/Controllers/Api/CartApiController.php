@@ -15,21 +15,21 @@ class CartApiController extends Controller
 {
     public function getCart()
     {
-        $userId = Auth::id();
-        $pesanan = Pesanan::where('user_id', $userId)->where('status', 0)->get();
-        $pesananDetails = [];
+        if (Auth::user()){
+            $this->pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status',0)->get();
+            if($this->pesanan->isNotEmpty()){
+                foreach($this->pesanan as $pesanan){
+                    $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+                    $this->pesanan_details[$pesanan->id] = $pesanan_details;
 
-        if ($pesanan->isNotEmpty()) {
-            foreach ($pesanan as $pesananItem) {
-                $pesananDetails[$pesananItem->id] = PesananDetail::where('pesanan_id', $pesananItem->id)->get();
+                }
             }
         }
 
-        $responseData = [
-            'pesanan' => $pesanan,
-            'pesanan_details' => $pesananDetails
-        ];
-
-        return response()->json([$responseData, 200]);
+        return response()->json([
+            'message' => 'Success',
+            'pesanan' => $this->pesanan,
+            'pesanan_details' => $this->pesanan_details
+        ]);
     }
 }
