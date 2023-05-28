@@ -14,6 +14,8 @@ class ApiCheckout extends Controller
     {
         $validatedData = $request->validate([
             'paymentreceipt' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+            'phone_number' =>'required',
+            'name' => 'required',
             'province' => 'required|max:50|min:4',
             'city' => 'required|max:50|min:4',
             'subdistrict' => 'required|max:50|min:4',
@@ -23,7 +25,7 @@ class ApiCheckout extends Controller
             'courier' => 'required'
         ]);
         $validatedData['paymentreceipt'] = $request->file('paymentreceipt')->store('post-image');
-        $pesanan = Pesanan::where('user_id', $request->user()->id)->first();
+        $pesanan = Pesanan::where('user_id', Auth::id())->first();
         // Hitung total harga
         $details_pesanan = PesananDetail::where('pesanan_id', $pesanan->id)->get();
         $totalPrice = 0;
@@ -32,14 +34,14 @@ class ApiCheckout extends Controller
         }
         // Buat Table Order
         $newOrder = Order::create([
-            'user_id'=> $request->user()->id,
+            'user_id'=> Auth::id(),
             'paymentreceipt'=> $validatedData['paymentreceipt'],
             'courier_id'=> $validatedData['courier'],
             'pesanan_id'=> $pesanan->id,
             'status'=> 'Menunggu konfirmasi',
         ]);
         // Memutus relasi pesanan lama dengan user
-        Pesanan::where('user_id', $request->user()->id)->first()
+        Pesanan::where('user_id', Auth::id())->first()
                 ->update([
                     'user_id' => null,
                     'order_id' =>  $newOrder->id,
@@ -48,6 +50,8 @@ class ApiCheckout extends Controller
 
         $validatedData['pesanan_id'] = $pesanan->id;
         $request->user()->update([
+            'name' => $validatedData['name'],
+            'phone_number' => $validatedData['hone_number'],
             'province' => $validatedData['province'],
             'city' => $validatedData['city'],
             'subdistrict' => $validatedData['subdistrict'],
