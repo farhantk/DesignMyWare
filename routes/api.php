@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ApiUserProfile;
 use App\Http\Controllers\Api\ApiCheckout;
 use App\Http\Controllers\Api\ApiTransaction;
 use App\Http\Controllers\Api\CartApiController;
+use App\Http\Controllers\Api\ApiExpedition;
 /*
 |--------------------------------------------------------------------------
 | API Routes
