@@ -30,10 +30,10 @@
                           {{$no++}}
                       </th>
                       <td class="px-6 py-4">
-                          {{ $pesanan_detail->pesanan->User->name}}
+                          
                       </td>
                       <td class="px-6 py-4">
-                          {{ $pesanan_detail->pesanan->User->phone_number}}
+                          
                       </td>
                       <td class="px-6 py-4">
                           {{ $pesanan_detail->product->name}}
@@ -83,3 +83,10 @@
       <!-- /.card -->
     </div>
   </div>
+
+  <!-- <td class="px-6 py-4">
+                          {{ $pesanan_detail->pesanan->User->name}}
+                      </td>
+                      <td class="px-6 py-4">
+                          {{ $pesanan_detail->pesanan->User->phone_number}}
+                      </td> -->
