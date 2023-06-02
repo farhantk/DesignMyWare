@@ -19,11 +19,10 @@ class CartApiController extends Controller
         if ($user) {
             $pesanan = Pesanan::where('user_id', $user->id)->where('status', 0)->get();
             $pesanan_details = [];
-            $no = 1;
-            $total_harga = 0;
             foreach ($pesanan as $pesanan) {
                 $details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
                 if (!$details->isEmpty()) {
+<<<<<<< HEAD
                     foreach ($details as $pesanan_detail) {
                         $item = [
                             'no' => $no++,
@@ -45,13 +44,16 @@ class CartApiController extends Controller
                         $pesanan_details[] = $item;
                         $total_harga += $item['harga_nego'];
                     }
+=======
+                    $pesanan_details[$pesanan->id] = $details;
+>>>>>>> 656b8b938db9a6d5e2a9f10f6d95113ea260b2ad
                 }
             }
 
             return response()->json([
                 'message' => 'Success',
-                'pesanan_details' => $pesanan_details,
-                'total_harga' => $total_harga,
+                'pesanan' => $pesanan,
+                'pesanan_details' => $pesanan_details
             ]);
         } else {
             return response()->json([
