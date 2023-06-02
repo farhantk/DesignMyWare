@@ -27,15 +27,23 @@ class CartApiController extends Controller
                     foreach ($details as $pesanan_detail) {
                         $item = [
                             'no' => $no++,
+                            'id' => $pesanan->id,
                             'product_name' => $pesanan_detail->product->name,
                             'jumlah_pesanan' => $pesanan_detail->jumlah_pesanan,
                             'product_price' => $pesanan_detail->product->price,
                             'subtotal' => $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price,
                             'status_nego' => $pesanan_detail->status_nego,
-                            'harga_nego' => $pesanan_detail->harga_nego,
+                            'harga_nego' => $pesanan_detail->harga,
                         ];
+
+                        if ($pesanan_detail->status_nego == 'Negosiasi' || $pesanan_detail->status_nego == 'Accept' || $pesanan_detail->status_nego == 'Reject') {
+                            $item['harga_nego'] = $pesanan_detail->harga_nego;
+                        } else {
+                            $item['harga_nego'] = $pesanan_detail->jumlah_pesanan * $pesanan_detail->product->price;
+                        }
+                        
                         $pesanan_details[] = $item;
-                        $total_harga += $pesanan_detail->harga_nego;
+                        $total_harga += $item['harga_nego'];
                     }
                 }
             }

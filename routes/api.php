@@ -34,7 +34,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('user/cart', [CartApiController::class, 'getCart'])->middleware('auth:sanctum');
-Route::post('user/cart/{id}/negotiation', [CartApiController::class, 'negotiation'])->middleware('auth:sanctum');;
+Route::post('user/cart/{id}/negotiation', [CartApiController::class, 'negotiation'])->name('pesanan_detail.negoisasi')->middleware('auth:sanctum');;
 Route::delete('user/cart/{id}/delete', [CartApiController::class, 'deleteCartDetail'])->middleware('auth:sanctum');
 
 // Route::middleware('auth:sanctum')->group(function () {
