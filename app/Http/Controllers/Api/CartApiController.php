@@ -28,7 +28,7 @@ class CartApiController extends Controller
                     foreach ($details as $pesanan_detail) {
                         $item = [
                             'no' => $no++,
-                            'id' => $pesanan->id,
+                            'id' => $pesanan_detail->id,
                             'product_name' => $pesanan_detail->product->name,
                             'jumlah_pesanan' => $pesanan_detail->jumlah_pesanan,
                             'product_price' => $pesanan_detail->product->price,
@@ -66,7 +66,7 @@ class CartApiController extends Controller
         $pesanan_detail = PesananDetail::findOrFail($id);
         $hargaBaru = $request->input('harga');
         $hargaLama = $pesanan_detail->harga;
-        
+
         if ($hargaBaru != $hargaLama) {
             $pesanan_detail->harga = $hargaBaru;
             $pesanan_detail->status_nego = 'Negotiation';

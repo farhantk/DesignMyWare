@@ -47,8 +47,6 @@ class Cart extends Controller
         } else {
             return redirect()->back()->with('error', 'Harga negosiasi tidak boleh sama dengan harga sebelumnya.');
         }
-        
-
     }
 
     public function delete($id)
